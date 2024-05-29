@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ScSite</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="js/math.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/colors.js"></script>
+    <script src="js/main_page.js"></script>
+
+</head>
+
+<body>
+
+    <svg id="svgQuadrillage">
+        <defs id="defs1">
+            <linearGradient id="grdstopsconf">
+                <stop style="stop-opacity:0.2;" offset="0" id="quadriGradStop0" />
+                <stop style="stop-opacity:1;" offset="0.50149703" id="quadriGradStop1" />
+                <stop style="stop-opacity:0.2;" offset="1" id="quadriGradStop2" />
+            </linearGradient>
+            <radialGradient xlink:href="#grdstopsconf" id="radialGradient" cx="50%" cy="50%" fx="50%" fy="50%" r="50%"
+                gradientUnits="userSpaceOnUse" />
+
+        </defs>
+        <g id="quadrillage" stroke="url(#radialGradient)" stroke-width="0.5"></g>
+    </svg>
+    <svg class="svgcurve">
+        <path id="maincurve" fill="none" d="" />
+        <path id="tangeante" fill="none" stroke="green" d="" />
+        <circle id="pointtang" r="5" cx="500" cy="0" fill="red"></circle>
+
+    </svg>
+    <div class="cardContainer">
+        <div class="card">
+            <p class="title">This is the title</p>
+            <p class="subtitle">This is the subtitle</p>
+        </div>
+    </div>
+    <div class="cardContainer">
+        <div class="card">
+            <p class="title">This is the title</p>
+            <p class="subtitle">This is the subtitle</p>
+        </div>
+    </div>
+    <script>
+
+        crea_quadr()
+        setGridColor()
+        draw_main_curve()
+
+    </script>
+</body>
+
+</html>
