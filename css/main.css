@@ -10,6 +10,7 @@ body {
     margin: 0;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
 #svgQuadrillage {
@@ -22,7 +23,6 @@ body {
 
 .svgcurve {
     position: absolute;
-    /*position: fixed; */
     width: 100%;
     height: 100vh;
 
@@ -53,13 +53,4 @@ body {
 }
 
 
-.title {
-    color: #ffffff;
-    font-size: 50pt;
-}
-
-.subtitle {
-    color: white;
-    font-size: 20pt;
-}
 

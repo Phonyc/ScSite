@@ -4,10 +4,11 @@ function getImage(x, fonction) {
     return eval(fonction);
 }
 function getDerivee(fonction) {
-    // console.log(math.derivative(fonction, 'x').toString());
-    // return math.derivative(fonction, 'x').toString();
 
-    return "((((2 * x - 180) * (-x - 605) + (x - 130) * (50 - x)) * (-x - 250) + (x - 130) * (50 - x) * (-x - 605)) * (500 - x) + (x - 130) * (50 - x) * (-x - 605) * (-x - 250)) / 25600000000";
+    // let re = math.derivative(fonction, 'x').toString();
+    // console.log(re);
+    let re = "((((2 * x - 180) * (-x - 605) + (x - 130) * (50 - x)) * (-x - 250) + (x - 130) * (50 - x) * (-x - 605)) * (500 - x) + (x - 130) * (50 - x) * (-x - 605) * (-x - 250)) / 3.84e+10";
+    return re;
 
 }
 

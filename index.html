@@ -36,13 +36,15 @@
     <circle id="pointtang" r="5" cx="500" cy="0"></circle>
 
 </svg>
+
 <!-- Page 1 -->
 <div class="cardContainer">
     <div class="card">
-        <p class="title">This is the title</p>
-        <p class="subtitle">This is the subtitle</p>
+        <p class="title">La Dérivation</p>
+        <div id="scrollToDiscover" onclick="nextPage1()"></div>
     </div>
 </div>
+
 <!-- Page 2 -->
 <div class="cardContainer" style="display: block; overflow: hidden">
     <div id="sommaireCard1" class="card sommaireCard sommaireCard1">
@@ -64,11 +66,12 @@
     </div>
 </div>
 <script>
-
+    window.scrollTo(0,  0)
     crea_quadr()
     setGridColor()
     draw_main_curve()
-
+    startTangmove()
+    // draw_tangente(-550, withpoint = true);
 </script>
 </body>
 
