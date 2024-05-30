@@ -1,0 +1,28 @@
+
+
+#maincurve {
+    stroke: #76ABAE;
+    stroke-width: 5px;
+}
+
+#tangente {
+    stroke: #f43020;
+    stroke-width: 5px;
+}
+#pointtang {
+    fill: #e5c185;
+
+}
+
+#maincurve {
+    /*stroke-dasharray: 500% 500%;*/
+    /*stroke-dashoffset: 1000%;*/
+    /*animation: dash 3s linear forwards;*/
+}
+
+/*@keyframes dash {*/
+/*    to {*/
+/*        stroke-dashoffset: 500%;*/
+/*    }*/
+
+/*}*/

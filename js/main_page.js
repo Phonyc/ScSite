@@ -30,13 +30,13 @@ function draw_main_curve() {
     }
     document.getElementById('maincurve').setAttribute('d', 'M' + d);
 }
-function draw_tangeante(point, withpoint= false) {
+function draw_tangente(point, withpoint= false) {
     let d = "";
     for (let x = -decalage - 5; x < decalage + 5; x++) {
-        let y = -getTangeante(point, x, main_eq) + window.innerHeight / 2;
+        let y = -gettangente(point, x, main_eq) + window.innerHeight / 2;
         d += (x + decalage) + ',' + y + ' ';
     }
-    document.getElementById('tangeante').setAttribute('d', 'M' + d);
+    document.getElementById('tangente').setAttribute('d', 'M' + d);
     if (withpoint) {
         document.getElementById('pointtang').setAttribute('cx', point + decalage);
         document.getElementById('pointtang').setAttribute('cy', -getImage(point, main_eq) + window.innerHeight / 2);
@@ -45,14 +45,14 @@ function draw_tangeante(point, withpoint= false) {
         document.getElementById('pointtang').setAttribute('cy', -10);
     }
 }
-let actual_tangeante = -decalage
-function update_tangeante() {
-    draw_tangeante(actual_tangeante, withpoint = true)
-    if (actual_tangeante !== 200) {
+let actual_tangente = -decalage
+function update_tangente() {
+    draw_tangente(actual_tangente, withpoint = true)
+    if (actual_tangente !== 200) {
 
-    actual_tangeante += 1
+    actual_tangente += 1
 
     }
 
 }
-setInterval(update_tangeante, 0.1)
+setInterval(update_tangente, 0.1)

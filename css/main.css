@@ -2,6 +2,7 @@
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    color: white;
 }
 
 body {
@@ -21,20 +22,12 @@ body {
 
 .svgcurve {
     position: absolute;
+    /*position: fixed; */
     width: 100%;
     height: 100vh;
 
 }
 
-#maincurve {
-    stroke: #76ABAE;
-    stroke-width: 5px;
-}
-
-#tangeante {
-    stroke: #f43020;
-    stroke-width: 5px;
-}
 
 .cardContainer {
     width: 100%;
@@ -42,8 +35,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
 }
+
 
 .card {
     background: rgb(150, 150, 150, 0.35);
@@ -69,15 +63,3 @@ body {
     font-size: 20pt;
 }
 
-#maincurve {
-    /*stroke-dasharray: 500% 500%;*/
-    /*stroke-dashoffset: 1000%;*/
-    /*animation: dash 3s linear forwards;*/
-}
-
-/*@keyframes dash {*/
-/*    to {*/
-/*        stroke-dashoffset: 500%;*/
-/*    }*/
-
-/*}*/

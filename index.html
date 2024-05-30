@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <title>ScSite</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/title.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sommaire.css"/>
     <script src="js/math.js"></script>
     <script src="js/main.js"></script>
     <script src="js/colors.js"></script>
@@ -15,44 +17,59 @@
 
 <body>
 
-    <svg id="svgQuadrillage">
-        <defs id="defs1">
-            <linearGradient id="grdstopsconf">
-                <stop style="stop-opacity:0.2;" offset="0" id="quadriGradStop0" />
-                <stop style="stop-opacity:1;" offset="0.50149703" id="quadriGradStop1" />
-                <stop style="stop-opacity:0.2;" offset="1" id="quadriGradStop2" />
-            </linearGradient>
-            <radialGradient xlink:href="#grdstopsconf" id="radialGradient" cx="50%" cy="50%" fx="50%" fy="50%" r="50%"
-                gradientUnits="userSpaceOnUse" />
+<svg id="svgQuadrillage">
+    <defs id="defs1">
+        <linearGradient id="grdstopsconf">
+            <stop style="stop-opacity:0.2;" offset="0" id="quadriGradStop0"/>
+            <stop style="stop-opacity:1;" offset="0.50149703" id="quadriGradStop1"/>
+            <stop style="stop-opacity:0.2;" offset="1" id="quadriGradStop2"/>
+        </linearGradient>
+        <radialGradient xlink:href="#grdstopsconf" id="radialGradient" cx="50%" cy="50%" fx="50%" fy="50%" r="50%"
+                        gradientUnits="userSpaceOnUse"/>
 
-        </defs>
-        <g id="quadrillage" stroke="url(#radialGradient)" stroke-width="0.5"></g>
-    </svg>
-    <svg class="svgcurve">
-        <path id="maincurve" fill="none" d="" />
-        <path id="tangeante" fill="none" stroke="green" d="" />
-        <circle id="pointtang" r="5" cx="500" cy="0" fill="red"></circle>
+    </defs>
+    <g id="quadrillage" stroke="url(#radialGradient)" stroke-width="0.5"></g>
+</svg>
+<svg class="svgcurve">
+    <path id="maincurve" fill="none" d=""/>
+    <path id="tangente" fill="none" stroke="green" d=""/>
+    <circle id="pointtang" r="5" cx="500" cy="0"></circle>
 
-    </svg>
-    <div class="cardContainer">
-        <div class="card">
-            <p class="title">This is the title</p>
-            <p class="subtitle">This is the subtitle</p>
-        </div>
+</svg>
+<!-- Page 1 -->
+<div class="cardContainer">
+    <div class="card">
+        <p class="title">This is the title</p>
+        <p class="subtitle">This is the subtitle</p>
     </div>
-    <div class="cardContainer">
-        <div class="card">
-            <p class="title">This is the title</p>
-            <p class="subtitle">This is the subtitle</p>
-        </div>
+</div>
+<!-- Page 2 -->
+<div class="cardContainer" style="display: block; overflow: hidden">
+    <div id="sommaireCard1" class="card sommaireCard sommaireCard1">
+        <p class="sommaireCardTitle">Tangente</p>
+        <p class="sommaireCardTitle" style="margin-left: 15%">&</p>
+        <p class="sommaireCardTitle" style="margin-left: 20%">Nombre dérive</p>
     </div>
-    <script>
+    <div id="sommaireCard2" class="card sommaireCard sommaireCard2">
+        <p class="sommaireCardTitle">Dérivées</p>
+        <p class="sommaireCardTitle" style="margin-left: 15%">&</p>
+        <p class="sommaireCardTitle" style="margin-left: 20%">Sens de variation</p>
 
-        crea_quadr()
-        setGridColor()
-        draw_main_curve()
 
-    </script>
+    </div>
+    <div id="sommaireCard3" class="card sommaireCard sommaireCard3">
+        <p class="sommaireCardTitle">Dérivées</p>
+        <p class="sommaireCardTitle" style="margin-left: 10%">de</p>
+        <p class="sommaireCardTitle" style="margin-left: 15%">fonctions courantes</p>
+    </div>
+</div>
+<script>
+
+    crea_quadr()
+    setGridColor()
+    draw_main_curve()
+
+</script>
 </body>
 
 </html>

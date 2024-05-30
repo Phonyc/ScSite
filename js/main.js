@@ -11,7 +11,7 @@ function getDerivee(fonction) {
 
 }
 
-function getTangeante(point, x, fonction) {
+function gettangente(point, x, fonction) {
     let der = eval(getDerivee(fonction).replaceAll("x", "point"));
 
     return der * (x - point) + getImage(point, fonction);
