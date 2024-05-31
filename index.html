@@ -12,6 +12,7 @@
     <script src="js/main.js"></script>
     <script src="js/colors.js"></script>
     <script src="js/main_page.js"></script>
+    <script src="js/sommaire.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
@@ -49,23 +50,29 @@
 
 <!-- Page 2 -->
 <div class="cardContainer" style="display: block; overflow: hidden">
-    <div id="sommaireCard1" class="card sommaireCard sommaireCard1">
+    <div id="sommaireCard1" class="card sommaireCard sommaireCard1" onclick="goToCard1(this)">
         <p class="sommaireCardTitle">Tangente</p>
         <p class="sommaireCardTitle" style="margin-left: 15%">&</p>
         <p class="sommaireCardTitle" style="margin-left: 20%">Nombre dérive</p>
     </div>
-    <div id="sommaireCard2" class="card sommaireCard sommaireCard2">
+    <div id="sommaireCard2" class="card sommaireCard sommaireCard2" onclick="goToCard1(this)">
         <p class="sommaireCardTitle">Dérivées</p>
         <p class="sommaireCardTitle" style="margin-left: 15%">&</p>
         <p class="sommaireCardTitle" style="margin-left: 20%">Sens de variation $$\frac{\pi}{2} $$</p>
 
 
     </div>
-    <div id="sommaireCard3" class="card sommaireCard sommaireCard3">
+    <div id="sommaireCard3" class="card sommaireCard sommaireCard3" onclick="goToCard1(this)">
         <p class="sommaireCardTitle">Dérivées</p>
         <p class="sommaireCardTitle" style="margin-left: 10%">de</p>
         <p class="sommaireCardTitle" style="margin-left: 15%">fonctions courantes</p>
     </div>
+</div>
+<!-- Page 3 -->
+<div class="cardContainer" style="display: block; overflow: hidden">
+    
+        <p class="sommaireCardTitle">Tangente</p>
+    
 </div>
 <script>
     window.scrollTo(0,  0)

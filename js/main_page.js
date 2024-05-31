@@ -97,7 +97,6 @@ function startTangmove() {
     }
 
 function nextPage1() {
-    console.log("next page");
     document.getElementById("maincurve").style.strokeDashoffset = "0%"
     document.getElementById("maincurve").style.animation = "sortie 1s linear forwards"
     document.getElementById("tangente").style.strokeDashoffset = "0%"
