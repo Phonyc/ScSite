@@ -10,15 +10,15 @@
     transition: 0.3s;
     transform: translate(0px);
     box-sizing: border-box;
-    box-shadow: 0 0 100000000px #2d494d;
+    box-shadow: 0 0 200px 20px #2d494d;
 
 }
 
 .sommaireCard:hover {
     backdrop-filter: blur(50px);
     z-index: 1000;
-    transform: scale(1.1);
-    box-shadow: 0 0 1000px 25px #101414;
+
+    box-shadow: 0 0 150px 50px #e5c185;
 }
 
 #sommaireCard2 {
@@ -59,6 +59,10 @@
 .clickedCard p {
     transition: 1s;
     opacity: 0;
+}
+
+.unclickedCard {
+    pointer-events: none;
 }
 
 /*.descrSommaire {*/

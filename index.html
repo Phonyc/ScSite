@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <link rel="stylesheet" type="text/css" href="css/title.css"/>
     <link rel="stylesheet" type="text/css" href="css/sommaire.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pages.css"/>
     <script src="js/math.js"></script>
     <script src="js/main.js"></script>
     <script src="js/colors.js"></script>
@@ -53,7 +54,7 @@
     <div id="sommaireCard1" class="card sommaireCard sommaireCard1" onclick="goToCard1(this)">
         <p class="sommaireCardTitle">Tangente</p>
         <p class="sommaireCardTitle" style="margin-left: 15%">&</p>
-        <p class="sommaireCardTitle" style="margin-left: 20%">Nombre dérive</p>
+        <p class="sommaireCardTitle" style="margin-left: 20%">Nombre dérivé</p>
     </div>
     <div id="sommaireCard2" class="card sommaireCard sommaireCard2" onclick="goToCard1(this)">
         <p class="sommaireCardTitle">Dérivées</p>
@@ -69,14 +70,20 @@
     </div>
 </div>
 <!-- Page 3 -->
-<div class="cardContainer" style="display: block; overflow: hidden">
-    
-        <p class="sommaireCardTitle">Tangente</p>
+<div class="cardContainer pageContainer">
+
+    <div class="pageElement" style="width: 100%; height: 200px; background: red"></div>
+    <div class="pageElement" style="width: 100%; height: 200px; background: blue"></div>
+    <div class="pageElement" style="width: 100%; height: 200px; background: green"></div>
+    <div class="pageElement" style="width: 100%; height: 200px; background: violet"></div>
+
+
     
 </div>
 <script>
-    window.scrollTo(0,  0)
+
     document.addEventListener("DOMContentLoaded", function() {
+        window.scrollTo(0,  0)
         renderMathInElement(document.body, {
           delimiters: [
               {left: '$$', right: '$$', display: true},
@@ -92,7 +99,6 @@
     updateDerivee(main_eq)
     draw_main_curve()
     startTangmove()
-    // draw_tangente(-550, withpoint = true);
 </script>
 </body>
 
