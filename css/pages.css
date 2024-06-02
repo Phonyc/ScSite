@@ -1,8 +1,119 @@
 .pageContainer {
-    overflow: scroll;
+    overflow: hidden;
     justify-content: start
 }
+
 .pageElement {
     z-index: 0;
     flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageTitle {
+    font-size: 50pt;
+    color: white;
+
+
+    text-shadow: 0 0 25px #76ABAE;
+    transition: 0.8s;
+}
+
+.pageTitleHidden {
+    font-size: 0;
+
+}
+
+.overElement {
+    height: 40px;
+    min-width: 40px;
+    border-radius: 20px;
+    z-index: 1;
+    margin: 20px;
+    box-shadow: 0 0 5px #76ABAE;
+    flex: none;
+    position: absolute;
+    align-items: center;
+    transition: 0.2s;
+    opacity: 1;
+}
+
+.btFermer {
+    width: 40px;
+    padding: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+
+.overElementHidden {
+    opacity: 0;
+}
+
+.ligneCroix {
+    --passIndicatorWidth: 70%;
+    width: var(--passIndicatorWidth);
+    left: 15%;
+    --height: 3px;
+    height: var(--height);
+    background: white;
+    position: absolute;
+    border-radius: 20%;
+    top: calc(50% - (var(--height) / 2));
+    transition: 0.5s;
+    z-index: 2;
+}
+
+
+.ligneCroixTourne:first-child {
+    transform: rotate(45deg);
+}
+
+.ligneCroixTourne:last-child {
+    transform: rotate(-45deg);
+}
+
+.scrollToPassBar {
+    --passIndicatorHeight: 70%;
+    height: var(--passIndicatorHeight);
+    --width: 5px;
+    width: var(--width);
+    background: white;
+    position: absolute;
+    border-radius: 40px;
+    top: 15%;
+    left: calc(50% - (var(--width) / 2));
+    transition: 0.3s;
+    z-index: 2;
+
+}
+
+
+.scrollToPass {
+    --height-container: 20vh;
+    height: var(--height-container);
+    right: 0;
+    margin-top: calc(50vh - var(--height-container) / 2);
+
+
+}
+
+.passIndicator {
+    --avancee: 0;
+    --height-ind: calc(var(--passIndicatorHeight) * var(--avancee));
+    top: calc(50% - var(--height-ind) / 2);
+    height: var(--height-ind);
+    border-radius: 20%;
+    box-shadow: 0 0 3px 1px #76ABAE;
+
+}
+
+#progressIndicatorP1 {
+    --avancee-page: 0.1;
+    --width: 7px;
+    border-radius: 40px;
+    background: #f43020;
+    height: calc(var(--passIndicatorHeight) * var(--avancee-page));
+    z-index: 100;
 }
