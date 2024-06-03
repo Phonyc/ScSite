@@ -1,3 +1,8 @@
+@font-face {
+  font-family: nunito;
+  src: url(../fonts/nunito.ttf);
+}
+
 * {
     scroll-behavior: smooth;
     -ms-overflow-style: none;
@@ -52,5 +57,6 @@ body {
     flex-direction:  column;
 }
 
-
-
+p {
+    font-family: nunito;
+}

@@ -39,7 +39,8 @@
 
 .sommaireCardTitle {
     font-size: 30pt;
-    margin: 0;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .clickedCard {
@@ -65,18 +66,8 @@
     pointer-events: none;
 }
 
-/*.descrSommaire {*/
-/*    background: rgba(255, 255, 255, 0.3);*/
-/*    align-self: center;*/
-
-/*    height: 90%;*/
-/*    width: 50%;*/
-/*    backdrop-filter: blur(5px);*/
-/*    position: absolute;*/
-/*    top: 1vh;*/
-/*    border: inherit;*/
-/*    border-radius: inherit;*/
-/*    right: 1vh;*/
-
-
-/*}*/
+.cardIllustration{
+    width: 45%;
+    margin: auto;
+    display: block;
+}
