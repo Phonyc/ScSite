@@ -3,15 +3,22 @@
 function getImage(x, fonction) {
     return eval(fonction);
 }
-let ders = {};
+let ders = Array();
 
 function getDerivee(fonction) {
     // let re = math.derivative(fonction, 'x').toString();
     // console.log(re);
 
-    return ders[fonction];
+    if (ders[fonction] !== undefined) {
+
+        return ders[fonction];
+    } else {
+        updateDerivee(fonction);
+        return ders[fonction];
+    }
 
 }
+
 function updateDerivee(fonction) {
     ders[fonction] = math.derivative(fonction, 'x').toString();
 }

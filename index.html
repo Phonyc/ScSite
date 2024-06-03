@@ -133,13 +133,22 @@
                 </div>
                 <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
                     <p class="expliTangenteText">
-                        Diminuez maintenant la distance entre les 2 points.
+                        Diminuez maintenant la distance (à droite) entre les 2 points jusqu'à ce qu'elle soit nulle.
                     </p>
                     <div class="expliTangenteslidecontainer">
                         <input type="range" min="0" max="100" value="100" class="slider" id="sliderExpliTangente">
                     </div>
-                    <div class="btOkEtape" style="display: flex;justify-content: center;align-items: center;">
+                    <div class="btOkEtape" style="display: flex;justify-content: center;align-items: center;cursor: auto">
                         <p id="diffpoints">100</p>
+                    </div>
+                </div>
+                <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
+                    <p class="expliTangenteText">
+                        On obtient alors la tangente à la courbe au point.<br><br>
+                        Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en ce point</u>.
+                    </p>
+                    <div class="btOkEtape" style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px">
+                        <p>↓&nbsp; Le nombre dérivé &nbsp;↓</p>
                     </div>
                 </div>
             </div>

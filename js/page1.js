@@ -11,11 +11,16 @@ function initPage1() {
     decalage_expli_tan = svgelem.width.baseVal.value / 2;
     let ExpliTangslider = document.getElementById("sliderExpliTangente");
     let diffpoints = document.getElementById("diffpoints");
-
-    ExpliTangslider.oninput = function() {
+    ExpliTangslider.value = x2;
+    ExpliTangslider.oninput = function () {
         x2 = parseInt(this.value);
         draw_tangente_expli_droite_at_points(-120, -120 + x2, drcurve, drpoints);
         diffpoints.innerText = `${x2}`
+        if (x2 === 0) {
+            setTimeout(() => {
+                document.getElementById("expliTangenteOptientTang").classList.remove("EtapeExpliHidden");
+            }, 500);
+        }
     }
 }
 
@@ -45,8 +50,6 @@ function updateProgressBar(e) {
             document.getElementById("page3").scrollTo(0, window.innerHeight * endroitScroll)
             resetPassBar()
             draw_tangente_expli_axes()
-            // draw_tangente_expli_main_curve()
-            // draw_tangente_expli_droite_at_points(-120, 10)
         } else if (passProgress <= -max_before_pass) {
             endroitScroll = 0
             document.getElementById("page3").scrollTo(0, endroitScroll)
@@ -87,14 +90,14 @@ function draw_tangente_expli_main_curve() {
     let hgt = svgelem.height.baseVal.value;
     for (let x = -decalage_expli_tan - marge_tang_ex; x < decalage_expli_tan + marge_tang_ex; x++) {
         let y = -getImage(x, explitaneq) + hgt / 2;
-        if (y < hgt + marge_tang_ex  && y > -marge_tang_ex) {
+        if (y < hgt + marge_tang_ex && y > -marge_tang_ex) {
             d += (x + decalage_expli_tan) + ',' + y + ' ';
-    }
+        }
     }
 
     let curve = document.getElementById('expliTangenteCurveMaincurve')
     curve.setAttribute('d', 'M' + d);
-    let ln =  curve.getTotalLength();
+    let ln = curve.getTotalLength();
     curve.style.strokeDasharray = ln;
     curve.style.strokeDashoffset = ln;
     curve.style.setProperty("--entrdashoffset-tangente-expli", `-${ln}`);
@@ -120,12 +123,14 @@ function draw_tangente_expli_axes() {
     ord.setAttribute('d', 'M' + dord);
 }
 
-function draw_tangente_expli_droite_at_points(x1, x2, courbe= true, points= false) {
+function draw_tangente_expli_droite_at_points(x1, x2, courbe = true, points = false) {
     let d = "";
     let hgt = svgelem.height.baseVal.value;
     let y1 = -getImage(x1, explitaneq)
     let y2 = -getImage(x2, explitaneq)
+
     let temp_eq = equationDroite(x1, -y1, x2, -y2)
+
     if (points) {
         let pt1 = document.getElementById('expliTangentePTang1')
         let pt2 = document.getElementById('expliTangentePTang2')
@@ -138,15 +143,18 @@ function draw_tangente_expli_droite_at_points(x1, x2, courbe= true, points= fals
     }
 
     if (courbe) {
-    for (let x of [-decalage_expli_tan, x1, x2, decalage_expli_tan]) {
-        let y = -getImage(x, temp_eq) + hgt / 2;
-        if (y < hgt + marge_tang_ex  && y > -marge_tang_ex) {
+        for (let x of [-decalage_expli_tan, x1, x2, decalage_expli_tan]) {
+            let y = 0;
+            if (x1 === x2) {
+                y = -gettangente(x1, x, explitaneq) + hgt / 2
+            } else {
+                y = -getImage(x, temp_eq) + hgt / 2;
+            }
             d += (x + decalage_expli_tan) + ',' + y + ' ';
         }
-    }
         let curve = document.getElementById('expliTangenteCurveTangente')
         curve.setAttribute('d', 'M' + d);
-        let ln =  curve.getTotalLength();
+        let ln = curve.getTotalLength();
         curve.style.strokeDasharray = ln;
         curve.style.strokeDashoffset = ln;
         curve.style.setProperty("--entrdashoffset-tangente-expli-tang", `-${ln}`);
@@ -194,10 +202,10 @@ function validatePoint(point) {
     switch (pointId) {
         case "expliTangentePrenonsCourbe":
             if (validate) {
-                drcurve = true
+                
                 draw_tangente_expli_main_curve();
             } else {
-                drcurve = false
+                
                 expliTan_removecurve();
             }
             idToShowNext = "expliTangentePrenonsPoints";
@@ -205,7 +213,7 @@ function validatePoint(point) {
         case "expliTangentePrenonsPoints":
             if (validate) {
                 drpoints = true;
-                draw_tangente_expli_droite_at_points(-120, -120 +x2, false, true);
+                draw_tangente_expli_droite_at_points(-120, -120 + x2, false, true);
             } else {
                 drpoints = false;
                 expliTan_removepoints();
@@ -215,17 +223,20 @@ function validatePoint(point) {
             break;
         case "expliTangentePrenonsTracerCourbe":
             if (validate) {
-                draw_tangente_expli_droite_at_points(-120, x2- 120);
+                drcurve = true
+                draw_tangente_expli_droite_at_points(-120, x2 - 120);
             } else {
+                drcurve = false
                 expliTan_removedroite();
             }
             idToShowNext = "expliTangenteBougerPoint";
             time_wait = 100;
             break;
     }
+    
     if (idToShowNext !== "" && validate) {
         setTimeout(() => {
-        document.getElementById(idToShowNext).classList.remove("EtapeExpliHidden");
+            document.getElementById(idToShowNext).classList.remove("EtapeExpliHidden");
         }, time_wait);
     }
 

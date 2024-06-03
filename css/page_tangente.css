@@ -141,6 +141,10 @@
     pointer-events: none;
     opacity: 0;
 }
+.EtapeExpliHidden .slider {
+    pointer-events: none;
+    opacity: 0;
+}
 
 .EtapeExpliHidden .btOkEtape .btOkEtapeLigne {
     transform: rotate(0);
