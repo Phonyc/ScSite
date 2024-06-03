@@ -86,7 +86,7 @@
     <div class="pageElement" style="width: 100%; height: 100vh;">
         <p id="titlePage1" class="pageTitle pageTitleHidden">Tangente & nombre dérivé</p>
     </div>
-    <div id="expliTangente" class="pageElement" style="width: 100%; height: 100vh;">
+    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;">
         <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
         <div id="expliTangenteContent">
             <div id="expliTangenteGraphCard" class="card">
@@ -138,30 +138,57 @@
                     <div class="expliTangenteslidecontainer">
                         <input type="range" min="0" max="100" value="100" class="slider" id="sliderExpliTangente">
                     </div>
-                    <div class="btOkEtape" style="display: flex;justify-content: center;align-items: center;cursor: auto">
+                    <div class="btOkEtape"
+                         style="display: flex;justify-content: center;align-items: center;cursor: auto">
                         <p id="diffpoints">100</p>
                     </div>
                 </div>
                 <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
                     <p class="expliTangenteText">
                         On obtient alors la tangente à la courbe au point.<br><br>
-                        Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en ce point</u>.
+                        Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en
+                        ce point</u>.
                     </p>
-                    <div class="btOkEtape" style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px">
+                    <div class="btOkEtape"
+                         style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
+                         onclick="initPage1_1()">
                         <p>↓&nbsp; Le nombre dérivé &nbsp;↓</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--    <div class="pageElement" style="width: 100%; height: 200px; background: blue"></div>-->
+    <div id="expliNDer" class="pageElement pElemP1" style="width: 100%; height: 100vh;">
+        <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Nombre dérivé</p>
+        <div id="expliNDeContent" style="flex-direction: column; align-items: center">
+            <p class="expliTangenteText" style="flex: none">
+
+               $$
+
+                \text{Soit une fonction f définie sur un intervalle } I \text{ contenant } a\newline\text{ }\newline
+
+                \text{Si } f \text{ est dérivable en } a \text{ il existe un réel tel que: }\newline\text{ }\newline f'(a)=\lim_{h\to 0}(\frac{f(a+h)-f(a)}{h})\newline\text{ }\newline
+
+                \text{Soit la courbe } \mathscr{C}:y=f(x) \newline
+                \text{Soit } A \text{ le point d'abscisse } a \text{ de la courbe } C_f \newline\text{ }\newline
+
+                \text{La tangente à la courbe en } a \text{ est la droite passant par } A \text{ et de coefficient directeur } f'(a)\newline\text{ }\newline
+                \text { En faisant tendre } h \text{ vers 0, la droite ne coupe plus la courbe qu'à un point}\newline $$
+            </p>
+            <div class="btOkEtape"
+                 style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
+                 onclick="initPage1_1()">
+                <p>Retour au sommaire</p>
+            </div>
+        </div>
+    </div>
 
 
 </div>
 <script>
 
 
-    window.scrollTo(0, window.innerHeight * 2);
+    window.scrollTo(0, window.innerHeight * 3);
     initPage1()
 
     document.addEventListener("DOMContentLoaded", function () {

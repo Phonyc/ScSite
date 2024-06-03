@@ -1,10 +1,17 @@
-#expliTangente {
+.pElemP1 {
     display: flex;
     flex-direction: column;
-
 }
 
 #expliTangenteContent {
+    display: flex;
+    flex: 1;
+    z-index: 10;
+    width: 90%;
+    margin: 10px;
+}
+
+#expliNDeContent {
     display: flex;
     flex: 1;
     z-index: 10;

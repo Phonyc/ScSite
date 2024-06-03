@@ -24,6 +24,13 @@ function initPage1() {
     }
 }
 
+function initPage1_1() {
+    actualpagenum = 2
+    document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
+    pageProgress +=  0.1
+    document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
+}
+
 
 function resetPassBar() {
     passProgress = 0
@@ -32,36 +39,46 @@ function resetPassBar() {
         document.getElementById("passIndicatorP1").style.setProperty("--avancee", "0");
     }, 500);
 }
-
+let actualpagenum = 0
 let phase = 0
 let passProgress = 0;
 let max_before_pass = 300;
 let reseter = null;
 let pageProgress = 0.1;
-let endroitScroll = 0
-
+let has_scrolled = false
 function updateProgressBar(e) {
+    console.log(e.deltaY)
     if (phase === 0 || phase === 1) {
         clearTimeout(reseter);
         passProgress = Math.min(Math.max(passProgress + e.deltaY, -max_before_pass), max_before_pass);
         document.getElementById("passIndicatorP1").style.setProperty("--avancee", `${Math.abs(passProgress) / max_before_pass}`);
-        if (passProgress >= max_before_pass) {
-            endroitScroll = 1;
-            document.getElementById("page3").scrollTo(0, window.innerHeight * endroitScroll)
+
+        if (passProgress >= max_before_pass &&!has_scrolled) {
+            actualpagenum = Math.min(2, actualpagenum + 1)
+            passProgress = 0
+
+            document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
             resetPassBar()
             draw_tangente_expli_axes()
-        } else if (passProgress <= -max_before_pass) {
-            endroitScroll = 0
-            document.getElementById("page3").scrollTo(0, endroitScroll)
+            has_scrolled = true;
+
+        } else if (passProgress <= -max_before_pass &&!has_scrolled) {
+            actualpagenum = Math.max(0, actualpagenum - 1)
+            passProgress = 0
+            document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
             resetPassBar()
+            has_scrolled = true;
         } else {
             reseter = setTimeout(() => {
                 passProgress = 0
                 document.getElementById("passIndicatorP1").style.setProperty("--avancee", "0");
             }, 500);
+            setTimeout(() => {
+                has_scrolled = false
+            }, 500);
         }
 
-        pageProgress = endroitScroll * 0.1 + 0.1
+        pageProgress = actualpagenum * 0.1 + 0.1
 
     }
     document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
