@@ -23,8 +23,13 @@ function updateDerivee(fonction) {
     ders[fonction] = math.derivative(fonction, 'x').toString();
 }
 
-function gettangente(point, x, fonction) {
-    let der = eval(getDerivee(fonction).replaceAll("x", "point"));
+function gettangente(point, x, fonction, eq = null) {
+    let deri = ""
+    if (eq == null) {
+        deri = eval(getDerivee(fonction).replaceAll("x", "point"));
+    } else {
+        deri = eval(eq.replaceAll("x", "point"));
+    }
 
-    return der * (x - point) + getImage(point, fonction);
+    return deri * (x - point) + getImage(point, fonction);
 }

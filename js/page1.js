@@ -1,4 +1,5 @@
 let x2 = 100
+
 function initPage1() {
     document.getElementById("titlePage1").classList.remove("pageTitleHidden")
     document.getElementById("btFermerP1").classList.remove("overElementHidden")
@@ -20,14 +21,44 @@ function initPage1() {
             setTimeout(() => {
                 document.getElementById("expliTangenteOptientTang").classList.remove("EtapeExpliHidden");
             }, 500);
+
+            pageProgress = Math.min(1, pageProgress + 1 / n_scroll_tot)
+
+            document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
+        } else {
+            pageProgress = 5 / n_scroll_tot
+        document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
         }
     }
+    document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
 }
+function click_slider(sld) {
+    let ExpliTangslider = document.getElementById("sliderExpliTangente");
+    let diffpoints = document.getElementById("diffpoints");
 
+    if (parseInt(ExpliTangslider.value) === 0) {
+        x2 = 100;
+        ExpliTangslider.value = 100;
+        diffpoints.innerText = `${x2}`
+        draw_tangente_expli_droite_at_points(-120, -120 + x2, drcurve, drpoints);
+        pageProgress = Math.max(1 / n_scroll_tot, pageProgress - 1 / n_scroll_tot)
+    } else {
+        pageProgress = Math.min(1, pageProgress + 1 / n_scroll_tot)
+        x2 = 0;
+        ExpliTangslider.value = 0;
+        diffpoints.innerText = `${x2}`
+        draw_tangente_expli_droite_at_points(-120, -120 + x2, drcurve, drpoints);
+        setTimeout(() => {
+            document.getElementById("expliTangenteOptientTang").classList.remove("EtapeExpliHidden");
+        }, 500);
+    }
+    document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
+}
 function initPage1_1() {
-    actualpagenum = 2
+    actualpagenum = 2;
     document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
-    pageProgress +=  0.1
+    pageProgress = 1;
+    phase = 0;
     document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
 }
 
@@ -39,50 +70,71 @@ function resetPassBar() {
         document.getElementById("passIndicatorP1").style.setProperty("--avancee", "0");
     }, 500);
 }
+
 let actualpagenum = 0
 let phase = 0
 let passProgress = 0;
 let max_before_pass = 300;
 let reseter = null;
-let pageProgress = 0.1;
 let has_scrolled = false
+let n_scroll_tot = 7
+let pageProgress = 1 / n_scroll_tot;
+
 function updateProgressBar(e) {
-    console.log(e.deltaY)
-    if (phase === 0 || phase === 1) {
-        clearTimeout(reseter);
-        passProgress = Math.min(Math.max(passProgress + e.deltaY, -max_before_pass), max_before_pass);
-        document.getElementById("passIndicatorP1").style.setProperty("--avancee", `${Math.abs(passProgress) / max_before_pass}`);
+    clearTimeout(reseter);
+    passProgress = Math.min(Math.max(passProgress + e.deltaY, -max_before_pass), max_before_pass);
+    document.getElementById("passIndicatorP1").style.setProperty("--avancee", `${Math.abs(passProgress) / max_before_pass}`);
 
-        if (passProgress >= max_before_pass &&!has_scrolled) {
-            actualpagenum = Math.min(2, actualpagenum + 1)
-            passProgress = 0
+    if (passProgress >= max_before_pass && !has_scrolled) {
+        actualpagenum = Math.min(2, actualpagenum + 1)
+        passProgress = 0
 
+        has_scrolled = true;
+        if (phase === 0) {
+            pageProgress = Math.min(1, pageProgress  + 1 / n_scroll_tot)
             document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
             resetPassBar()
             draw_tangente_expli_axes()
-            has_scrolled = true;
-
-        } else if (passProgress <= -max_before_pass &&!has_scrolled) {
-            actualpagenum = Math.max(0, actualpagenum - 1)
-            passProgress = 0
-            document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
-            resetPassBar()
-            has_scrolled = true;
         } else {
-            reseter = setTimeout(() => {
-                passProgress = 0
-                document.getElementById("passIndicatorP1").style.setProperty("--avancee", "0");
-            }, 500);
-            setTimeout(() => {
-                has_scrolled = false
-            }, 500);
+            // console.log(pageProgress * n_scroll_tot - 2)
+            if (Math.round((pageProgress + 1) * n_scroll_tot - 2) === 4) {
+                phase = 0;
+            }
+            // document.getElementById("expliTangenteTextCard").children[Math.round(pageProgress * n_scroll_tot - 2)].classList.remove("EtapeExpliHidden");
+            document.getElementById("expliTangenteTextCard").children[Math.round(pageProgress * n_scroll_tot - 2)].querySelector(".btOkEtape").click();
         }
 
-        pageProgress = actualpagenum * 0.1 + 0.1
 
+    } else if (passProgress <= -max_before_pass && !has_scrolled) {
+        actualpagenum = Math.max(0, actualpagenum - 1)
+        passProgress = 0
+        has_scrolled = true;
+
+    if (phase === 0) {
+        pageProgress = Math.max(1 / n_scroll_tot, pageProgress - 1 / n_scroll_tot)
+        document.getElementById("page3").scrollTo(0, actualpagenum * window.innerHeight)
+        resetPassBar()
+    } else {
+        // document.getElementById("expliTangenteTextCard").children[Math.round((pageProgress - 1) * n_scroll_tot - 1)].classList.remove("EtapeExpliHidden");
+        document.getElementById("expliTangenteTextCard").children[Math.round(pageProgress * n_scroll_tot - 3)].querySelector(".btOkEtape").click();
     }
+    } else {
+        reseter = setTimeout(() => {
+            passProgress = 0
+            document.getElementById("passIndicatorP1").style.setProperty("--avancee", "0");
+        }, 500);
+        setTimeout(() => {
+            has_scrolled = false
+        }, 500);
+    }
+    if (actualpagenum === 1) {
+        phase = 1
+    }
+
+
     document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
 }
+
 // TODO Ajout "Scroller pour continuer" et "Scroller plus pour changer de page"
 // let explitaneq = "((105 - x) * (321 - x) * (94 - x) * (-498 - x) * (-404 - x)) / 10000000000";
 // let explitaneq = "((105 - x) * (321 - x) * (94 - x) * (-498 - x) * (-404 - x)) / 10000000000";
@@ -101,6 +153,7 @@ let svgelem = null
 let decalage_expli_tan = 0
 
 let marge_tang_ex = 40;
+
 function draw_tangente_expli_main_curve() {
 
     let d = "";
@@ -163,7 +216,7 @@ function draw_tangente_expli_droite_at_points(x1, x2, courbe = true, points = fa
         for (let x of [-decalage_expli_tan, x1, x2, decalage_expli_tan]) {
             let y = 0;
             if (x1 === x2) {
-                y = -gettangente(x1, x, explitaneq) + hgt / 2
+                y = -gettangente(x1, x, explitaneq, "(((((((((2 * x - 576) * (-x - 255) + (x - 464) * (112 - x)) * (-x - 446) + (x - 464) * (112 - x) * (-x - 255)) * (-x - 21) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446)) * (168 - x) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446) * (-x - 21)) * (-x - 373) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446) * (-x - 21) * (168 - x)) * (-x - 115) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446) * (-x - 21) * (168 - x) * (-x - 373)) * (427 - x) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446) * (-x - 21) * (168 - x) * (-x - 373) * (-x - 115)) * (293 - x) + (x - 464) * (112 - x) * (-x - 255) * (-x - 446) * (-x - 21) * (168 - x) * (-x - 373) * (-x - 115) * (427 - x)) / 1e+22") + hgt / 2
             } else {
                 y = -getImage(x, temp_eq) + hgt / 2;
             }
@@ -192,11 +245,13 @@ function expliTan_removedroite() {
     curve.style.strokeDashoffset = "0"
     curve.style.animation = "sortieTangExTang 1s linear forwards"
 }
+
 function expliTan_removecurve() {
     let curve = document.getElementById('expliTangenteCurveMaincurve')
     curve.style.strokeDashoffset = "0"
     curve.style.animation = "sortieTangEx 1s linear forwards"
 }
+
 function equationDroite(x1, y1, x2, y2) {
     let a = (y1 - y2) / (x1 - x2);
     let b = y1 - a * x1;
@@ -206,23 +261,28 @@ function equationDroite(x1, y1, x2, y2) {
 
 let drpoints = false
 let drcurve = false
+
 function validatePoint(point) {
+
     let pointId = point.parentNode.id;
     let validate = !point.classList.contains("btOkEtapeValide")
     if (validate) {
         point.classList.add("btOkEtapeValide");
+        pageProgress = Math.min(1, pageProgress + 1 / n_scroll_tot)
     } else {
         point.classList.remove("btOkEtapeValide");
+        pageProgress = Math.max(1 / n_scroll_tot, pageProgress - 1 / n_scroll_tot)
     }
+    document.getElementById("progressIndicatorP1").style.setProperty("--avancee-page", `${pageProgress}`);
     let idToShowNext = "";
     let time_wait = 800
     switch (pointId) {
         case "expliTangentePrenonsCourbe":
             if (validate) {
-                
+
                 draw_tangente_expli_main_curve();
             } else {
-                
+
                 expliTan_removecurve();
             }
             idToShowNext = "expliTangentePrenonsPoints";
@@ -250,7 +310,7 @@ function validatePoint(point) {
             time_wait = 100;
             break;
     }
-    
+
     if (idToShowNext !== "" && validate) {
         setTimeout(() => {
             document.getElementById(idToShowNext).classList.remove("EtapeExpliHidden");
