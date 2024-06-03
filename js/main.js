@@ -1,5 +1,5 @@
 
-
+// TODO Utiliser des classes
 function getImage(x, fonction) {
     return eval(fonction);
 }

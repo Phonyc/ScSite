@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/title.css"/>
     <link rel="stylesheet" type="text/css" href="css/sommaire.css"/>
     <link rel="stylesheet" type="text/css" href="css/pages.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page_tangente.css"/>
     <script src="js/math.js"></script>
     <script src="js/main.js"></script>
     <script src="js/colors.js"></script>
@@ -43,7 +44,7 @@
 <svg class="svgcurve">
     <path id="maincurve" fill="none" d=""/>
     <path id="tangente" fill="none" stroke="green" d=""/>
-    <circle id="pointtang" r="5" cx="500" cy="0"></circle>
+    <circle id="pointtang" class="pointtang" r="5" cx="500" cy="0"></circle>
 
 </svg>
 
@@ -85,8 +86,64 @@
     <div class="pageElement" style="width: 100%; height: 100vh;">
         <p id="titlePage1" class="pageTitle pageTitleHidden">Tangente & nombre dérivé</p>
     </div>
-    <div class="pageElement" style="width: 100%; height: 100vh;">
-        <p class="pageTitle">Tangente & nombre dérivé</p>
+    <div id="expliTangente" class="pageElement" style="width: 100%; height: 100vh;">
+        <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
+        <div id="expliTangenteContent">
+            <div id="expliTangenteGraphCard" class="card">
+                <svg id="expliTangenteSvg">
+                    <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>
+                    <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>
+                    <path id="expliTangenteCurveMaincurve" fill="none" d=""/>
+                    <path id="expliTangenteCurveTangente" fill="none" d=""/>
+                    <circle id="expliTangentePTang1" class="pointtang" r="5" cx="500"
+                            cy="-10"></circle>
+                    <circle id="expliTangentePTang2" class="pointtang" r="5" cx="500"
+                            cy="-10"></circle>
+
+
+                </svg>
+            </div>
+            <div id="expliTangenteTextCard">
+                <div id="expliTangentePrenonsCourbe" class="EtapeExpli">
+                    <p class="expliTangenteText">
+                        Prenons une courbe représentative d'une fonction.
+                    </p>
+                    <div class="btOkEtape" onclick="validatePoint(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
+                </div>
+                <div id="expliTangentePrenonsPoints" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliTangenteText">
+                        Prenons 2 Points sur cette courbe.
+                    </p>
+                    <div class="btOkEtape" onclick="validatePoint(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
+                </div>
+                <div id="expliTangentePrenonsTracerCourbe" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliTangenteText">
+                        Traçons la droite passant par ces 2 points
+                    </p>
+                    <div class="btOkEtape" onclick="validatePoint(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
+                </div>
+                <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliTangenteText">
+                        Diminuez maintenant la distance entre les 2 points.
+                    </p>
+                    <div class="expliTangenteslidecontainer">
+                        <input type="range" min="0" max="100" value="100" class="slider" id="sliderExpliTangente">
+                    </div>
+                    <div class="btOkEtape" style="display: flex;justify-content: center;align-items: center;">
+                        <p id="diffpoints">100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--    <div class="pageElement" style="width: 100%; height: 200px; background: blue"></div>-->
 
@@ -95,8 +152,8 @@
 <script>
 
 
-    // window.scrollTo(0, window.innerHeight * 2);
-    // initPage1()
+    window.scrollTo(0, window.innerHeight * 2);
+    initPage1()
 
     document.addEventListener("DOMContentLoaded", function () {
 

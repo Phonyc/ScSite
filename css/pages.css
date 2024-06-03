@@ -1,3 +1,4 @@
+
 .pageContainer {
     overflow: hidden;
     justify-content: start
@@ -108,6 +109,8 @@
     box-shadow: 0 0 4px 2px #76ABAE;
 
 }
+
+
 
 #progressIndicatorP1 {
     --avancee-page: 0.1;

@@ -1,5 +1,5 @@
 let decalage = window.innerWidth / 2;
-let marge = 10
+let marge = 20
 let main_eq = `((130-x)*(50-x)*(-605-x)*(-250-x)*(500-x))/(20000000*${window.innerWidth})`;
 // let main_eq = `((-50-x) * (-250-x) * (-100-x) * (40-x) * (200-x)) / (600000*${window.innerWidth})`;
 

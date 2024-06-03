@@ -1,9 +1,5 @@
 
 
-#maincurve {
-    stroke: #76ABAE;
-    stroke-width: 5px;
-}
 
 #tangente {
     stroke: #f43020;
@@ -15,13 +11,15 @@
 
 }
 
-#pointtang {
+.pointtang {
     fill: #e5c185;
     transition: opacity 0.5s;
     opacity: 0;
 }
 
 #maincurve {
+    stroke: #76ABAE;
+    stroke-width: 5px;
     stroke-dasharray: 0;
     stroke-dashoffset: 0;
     --entrdashoffset: 0;
