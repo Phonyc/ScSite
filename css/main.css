@@ -8,6 +8,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     color: white;
+    font-family: nunito, serif;
 }
 
 body {
@@ -16,21 +17,6 @@ body {
     height: 100vh;
     width: 100%;
     overflow: hidden;
-}
-
-#svgQuadrillage {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: #121111;
-
-}
-
-.svgcurve {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-
 }
 
 
@@ -57,6 +43,38 @@ body {
     flex-direction:  column;
 }
 
-p {
-    font-family: nunito;
+
+#svgQuadrillage {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #121111;
+
+}
+
+#svgBackCurve {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.curve {
+    stroke: #76ABAE;
+    stroke-width: 5px;
+}
+.droite {
+    stroke: #f43020;
+    stroke-width: 5px;
+}
+.tangente {
+    stroke: #f43020;
+    transition: opacity 1s;
+    opacity: 0;
+
+}
+.tangentePoint {
+    fill: #e5c185;
+    transition: opacity 1s;
+    opacity: 0;
 }
