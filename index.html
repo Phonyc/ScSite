@@ -80,121 +80,166 @@
         <div class="scrollToPassBar passIndicator"></div>
     </div>
     <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p id="titlePage1" class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
+        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
 
 
-    <div class="btOkEtape" data-novalidate="true"  onclick="validatePointTE(this)"
-         style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-        <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
-    </div>
-    </div>
-
-<div class="pageElement pElemP1" style="width: 100%; height: 100vh;">
-    <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
-    <div id="expliTangenteContent">
-        <div id="expliTangenteGraphCard" class="card">
-            <svg id="expliTangenteSvg">
-                <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>
-                <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>
-<!--                <path id="expliTangenteCurveMaincurve" fill="none" d=""/>-->
-<!--                <path id="expliTangenteCurveTangente" fill="none" d=""/>-->
-<!--                <circle id="expliTangentePTang1" class="pointtang" r="5" cx="500"-->
-<!--                        cy="-10"></circle>-->
-<!--                <circle id="expliTangentePTang2" class="pointtang" r="5" cx="500"-->
-<!--                        cy="-10"></circle>-->
-
-
-            </svg>
+        <div class="btOkEtape" data-novalidate="true" onclick="validatePointTE(this)"
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
         </div>
-        <div id="expliTangenteTextCard">
-            <div id="expliTangentePrenonsCourbe" class="EtapeExpli EtapeExpliHidden">
-                <p class="expliText">
-                    Prenons une courbe représentative d'une fonction.
-                </p>
-                <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
-                    <div class="btOkEtapeLigne"></div>
-                    <div class="btOkEtapeLigne"></div>
-                </div>
+    </div>
+
+    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;">
+        <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
+        <div id="expliTangenteContent">
+            <div id="expliTangenteGraphCard" class="card">
+                <svg id="expliTangenteSvg">
+<!--                    <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>-->
+<!--                    <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>-->
+                </svg>
             </div>
-            <div id="expliTangentePrenonsPoints" class="EtapeExpli EtapeExpliHidden">
-                <p class="expliText">
-                    Prenons 2 Points sur cette courbe.
-                </p>
-                <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
-                    <div class="btOkEtapeLigne"></div>
-                    <div class="btOkEtapeLigne"></div>
+            <div id="expliTangenteTextCard">
+                <div id="expliTangentePrenonsCourbe" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliText">
+                        Prenons une courbe représentative d'une fonction.
+                    </p>
+                    <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
                 </div>
-            </div>
-            <div id="expliTangenteTracerDroite" class="EtapeExpli EtapeExpliHidden">
-                <p class="expliText">
-                    Traçons la droite passant par ces 2 points
-                </p>
-                <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
-                    <div class="btOkEtapeLigne"></div>
-                    <div class="btOkEtapeLigne"></div>
+                <div id="expliTangentePrenonsPoints" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliText">
+                        Prenons 2 Points sur cette courbe.
+                    </p>
+                    <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
                 </div>
-            </div>
-            <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
-                <p class="expliText">
-                    Diminuez maintenant la distance (à droite) entre les 2 points jusqu'à ce qu'elle soit nulle.
-                </p>
-                <div class="expliTangenteslidecontainer">
-                    <input type="range" min="0" max="100" value="100" class="slider" id="sliderET">
+                <div id="expliTangenteTracerDroite" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliText">
+                        Traçons la droite passant par ces 2 points
+                    </p>
+                    <div class="btOkEtape" data-allersimple="true" onclick="validatePointTE(this)">
+                        <div class="btOkEtapeLigne"></div>
+                        <div class="btOkEtapeLigne"></div>
+                    </div>
                 </div>
-                <div class="btOkEtape"
-                     id="shwETSlid"
-                     data-allersimple="true"
-                     data-isSlider="true"
-                     onclick="validatePointTE(this)"
-                     style="display: flex;justify-content: center;align-items: center;transition: 0.1s">
-                    <p id="diffpoints">100</p>
+                <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
+                    <p class="expliText">
+                        Diminuez maintenant la distance (à droite) entre les 2 points jusqu'à ce qu'elle soit nulle.
+                    </p>
+                    <div class="expliTangenteslidecontainer">
+                        <input type="range" min="0" max="100" value="100" class="slider" id="sliderET">
+                    </div>
+                    <div class="btOkEtape"
+                         id="shwETSlid"
+                         data-allersimple="true"
+                         data-isSlider="true"
+                         onclick="validatePointTE(this)"
+                         style="display: flex;justify-content: center;align-items: center;transition: 0.1s">
+                        <p id="diffpoints">100</p>
+                    </div>
                 </div>
-            </div>
-            <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
-                <p class="expliText">
-                    On obtient alors la tangente à la courbe au point.<br><br>
-                    Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en
-                    ce point</u>.
-                </p>
-                <div class="btOkEtape"
-                     data-allersimple="true"
-                     data-novalidate="true"
-                     style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
-                     onclick="validatePointTE(this)">
-                    <p>↓&nbsp; Le nombre dérivé &nbsp;↓</p>
+                <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
+                    <p class="expliText">
+                        On obtient alors la tangente à la courbe au point.<br><br>
+                        Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en
+                        ce point</u>.
+                    </p>
+                    <div class="btOkEtape"
+                         data-allersimple="true"
+                         data-pagetourne="true"
+                         data-novalidate="true"
+                         style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
+                         onclick="validatePointTE(this)">
+                        <p>↓&nbsp; Le nombre dérivé &nbsp;↓</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div id="expliNDer" class="pageElement pElemP1" style="width: 100%; height: 100vh;">
-    <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Nombre dérivé</p>
-    <div id="expliNDeContent" style="flex-direction: column; align-items: center">
-        <p class="expliText" style="flex: none">
+    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;">
+        <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Nombre dérivé</p>
+        <div class="expliNDeContent" style="flex-direction: column; align-items: center">
+            <p class="expliText" style="flex: none">
 
-            $$
+                $$
 
-            \text{Soit une fonction f définie sur un intervalle } I \text{ contenant } a\newline\text{ }\newline
+                \text{Soit une fonction f définie sur un intervalle } I \text{ contenant } a\newline\text{ }\newline
 
-            \text{Si } f \text{ est dérivable en } a \text{ il existe un réel tel que: }\newline\text{ }\newline
-            f'(a)=\lim_{h\to 0}(\frac{f(a+h)-f(a)}{h})\newline\text{ }\newline
+                \text{Si } f \text{ est dérivable en } a \text{ il existe un réel tel que: }\newline\text{ }\newline
+                f'(a)=\lim_{h\to 0}(\frac{f(a+h)-f(a)}{h})\newline\text{ }\newline
 
-            \text{Soit la courbe } \mathscr{C}:y=f(x) \newline
-            \text{Soit } A \text{ le point d'abscisse } a \text{ de la courbe } C_f \newline\text{ }\newline
+                \text{Soit la courbe } \mathscr{C}:y=f(x) \newline
+                \text{Soit } A \text{ le point d'abscisse } a \text{ de la courbe } C_f \newline\text{ }\newline
 
-            \text{La tangente à la courbe en } a \text{ est la droite passant par } A \text{ et de coefficient
-            directeur } f'(a)\newline\text{ }\newline
-            \text { En faisant tendre } h \text{ vers 0, la droite ne coupe plus la courbe qu'à un point}\newline $$
-        </p>
-        <div class="btOkEtape"
+                \text{La tangente à la courbe en } a \text{ est la droite passant par } A \text{ et de coefficient
+                directeur } f'(a)\newline\text{ }\newline
+                \text { En faisant tendre } h \text{ vers 0, la droite ne coupe plus la courbe qu'à un point}\newline $$
+            </p>
+            <div class="btOkEtape"
 
-             style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
+                 data-pagetourne="true"
+                 data-novalidate="true"
+                 style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 300px"
+                 onclick="validatePointTE(this)">
+                <p>↓&nbsp; Dérivée et sens de variation &nbsp;↓</p>
+            </div>
+        </div>
+    </div>
+    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
+
+
+        <div class="btOkEtape" onclick="validatePointTE(this)"
+             data-pagetourne="true"
              data-novalidate="true"
-             onclick="validatePointTE(this)">
-            <p>Retour au sommaire</p>
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
+        </div>
+    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
+
+
+        <div class="btOkEtape" onclick="validatePointTE(this)"
+             data-pagetourne="true"
+             data-novalidate="true"
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
+        </div>
+    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
+
+
+        <div class="btOkEtape" onclick="validatePointTE(this)"
+             data-pagetourne="true"
+             data-novalidate="true"
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
+        </div>
+    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
+
+
+        <div class="btOkEtape" onclick="validatePointTE(this)"
+             data-pagetourne="true"
+             data-novalidate="true"
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Descendez pour découvrir &nbsp;↓</p>
+        </div>
+    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+        <p class="pageTitle" style="margin-top: 60vh;">Dérivée & sens de variation</p>
+
+
+        <div class="btOkEtape" onclick="validatePointTE(this)"
+             data-pagetourne="true"
+             data-novalidate="true"
+             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
+            <p>↓&nbsp; Descendez pour découvrir &nbsp;↓</p>
         </div>
     </div>
-</div>
 </div>
 
 

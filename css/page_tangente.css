@@ -11,7 +11,7 @@
     margin: 10px;
 }
 
-#expliNDeContent {
+.expliNDeContent {
     display: flex;
     flex: 1;
     z-index: 10;

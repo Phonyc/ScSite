@@ -64,6 +64,7 @@ class PageScroller {
 
     validatePoint(button, scrollup) {
         let valider = !(button.dataset["novalidate"] === "true")
+        let pageTourne = button.dataset["pagetourne"] === "true"
         let aValider = !button.classList.contains("btOkEtapeValide") && valider;
         let btIndex = this.elements.indexOf(button)
 
@@ -81,20 +82,23 @@ class PageScroller {
                     break;
                 }
             }
+
         }
 
-        if (!scrollup && !valider) {
-            let maxIndexInNextPage = this.elements.findLastIndex(e => Math.floor(e.parentNode.getBoundingClientRect().top / window.innerHeight) === 1);
+        if (!scrollup && !valider ) {
+            let maxIndexInNextPage = this.elements.findLastIndex(e => Math.floor(e.getBoundingClientRect().top / window.innerHeight) === 1);
             nextIndex = Math.min(Math.max(this.indexLastDiscovered, nextIndex), maxIndexInNextPage);
         }
 
         let nextElement = this.elements[nextIndex];
         this.indexLastDiscovered = Math.max(nextIndex, this.indexLastDiscovered);
+        if (!(allerSimple && nextIndex < btIndex) || !allerSimple || (scrollup && nextIndex < btIndex)) {
 
-        if (!(allerSimple && nextIndex < this.indexLastDiscovered) || !allerSimple || (scrollup && nextIndex < this.indexLastDiscovered)) {
-            this.setActualElement(nextIndex);
-            let pageToScroll = Math.floor(nextElement.parentNode.getBoundingClientRect().top / window.innerHeight);
+            let pageToScroll = Math.floor(nextElement.getBoundingClientRect().top / window.innerHeight);
             document.getElementById(this.pageContainerId).scrollTo(0, document.getElementById(this.pageContainerId).scrollTop + pageToScroll * window.innerHeight)
+        }
+        if (!(allerSimple && nextIndex < this.indexLastDiscovered) || !allerSimple || (scrollup && nextIndex < this.indexLastDiscovered || pageTourne)) {
+            this.setActualElement(nextIndex);
         }
         nextElement.parentElement.classList.remove("EtapeExpliHidden");
 
