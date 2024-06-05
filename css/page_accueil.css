@@ -1,0 +1,24 @@
+
+.title {
+    color: #ffffff;
+    font-size: 50pt;
+    position: absolute;
+    top: 15vh;
+    left: 18vw;
+}
+
+
+#scrollToDiscover {
+    position: absolute;
+    top: 60vh;
+    left: 50%;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    width: 20%;
+    height: 50px;
+    border-radius: inherit;
+    border: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

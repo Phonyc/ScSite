@@ -15,9 +15,7 @@ function goToCard1(card) {
 
         window.scrollTo(0, 2 * window.innerHeight);
     }, 1000)
-    setTimeout(() => {
-        initPage1();
-    }, 1500);
+
     // TODO Remove clickedCardClass en revenant
 }
 

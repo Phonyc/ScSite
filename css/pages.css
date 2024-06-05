@@ -87,7 +87,6 @@
     left: calc(50% - (var(--width) / 2));
     transition: 0.3s;
     z-index: 2;
-
 }
 
 
@@ -101,8 +100,8 @@
 }
 
 .passIndicator {
-    --avancee: 0;
-    --height-ind: calc(var(--passIndicatorHeight) * var(--avancee));
+    --avancee-pass: 0;
+    --height-ind: calc(var(--passIndicatorHeight) * var(--avancee-pass));
     top: calc(50% - var(--height-ind) / 2);
     height: var(--height-ind);
     border-radius: 20%;
@@ -111,12 +110,90 @@
 }
 
 
-
-#progressIndicatorP1 {
-    --avancee-page: 0.1;
+.slideIndicator {
+    --avancee-slide: 0;
     --width: 7px;
     border-radius: 40px;
     background: #f43020;
-    height: calc(var(--passIndicatorHeight) * var(--avancee-page));
+    height: calc(var(--passIndicatorHeight) * var(--avancee-slide));
     z-index: 100;
+}
+
+.btOkEtape {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 20px;
+    /*box-shadow: 0 0 5px #ad5f5f;*/
+    /*box-shadow: 0 0 5px #76ABAE;*/
+    box-shadow: 0 0 5px #76ae7d;
+    flex: none;
+    align-items: center;
+    transition: 0.2s;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btOkEtapeValide {
+    background-color: #76ae7d;
+
+}
+
+.btOkEtapeLigne {
+    height: 3px;
+    position: relative;
+    background: white;
+    border-radius: 20%;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+
+.expliText {
+    font-size: 14pt;
+    padding-left: 40px;
+    padding-right: 20px;
+    text-align: justify;
+    flex: 1;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.EtapeExpli {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.btOkEtapeLigne:first-child {
+    transform: rotate(45deg);
+    top: 60%;
+    left: 18%;
+    width: 30%;
+}
+
+.btOkEtapeLigne:last-child {
+    transform: rotate(-60deg);
+    top: 40%;
+    left: 27%;
+    width: 60%;
+}
+
+.EtapeExpliHidden .expliText {
+    transform: scale(0);
+
+}
+.EtapeExpliHidden .btOkEtape {
+    pointer-events: none;
+    opacity: 0;
+}
+.EtapeExpliHidden .slider {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.EtapeExpliHidden .btOkEtape .btOkEtapeLigne {
+    transform: rotate(0);
+    opacity: 0;
 }
