@@ -43,7 +43,7 @@ function updateSliderTE(distance) {
 
 function sliderTEClick(valider = true, value = 100) {
     if (valider) {
-        updateSliderTE(0)
+        updateSliderTE(0.01) // c'est jamais égal à 0 en réalité
     } else {
         updateSliderTE(value)
     }
