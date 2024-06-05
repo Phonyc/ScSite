@@ -128,7 +128,7 @@
                 </div>
                 <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
                     <p class="expliText">
-                        Diminuez maintenant la distance (à droite) entre les 2 points jusqu'à ce qu'elle soit nulle.
+                        Réduisez maintenant l'écart entre les 2 points afin qu'il se rapproche de 0 (Sans jamais l'atteindre).
                     </p>
                     <div class="expliTangenteslidecontainer">
                         <input type="range" min="0" max="100" value="100" class="slider" id="sliderET">
@@ -145,7 +145,7 @@
                 <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
                     <p class="expliText">
                         On obtient alors la tangente à la courbe au point.<br><br>
-                        Le coefficient directeur de cette droite (pente) est le <b>nombre dérivé</b> de la fonction <u>en
+                        Le coefficient directeur de cette droite ("pente") est le <b>nombre dérivé</b> de la fonction <u>en
                         ce point</u>.
                     </p>
                     <div class="btOkEtape"
@@ -165,19 +165,18 @@
         <div class="expliNDeContent" style="flex-direction: column; align-items: center">
             <p class="expliText" style="flex: none">
 
-                $$
+                Soit $f$ une fonction définie sur un intervalle $I$ contenant $a$. <br>
+                Soit $\mathscr{C}:y=f(x)$ sa courbe représentative<br>
 
-                \text{Soit une fonction f définie sur un intervalle } I \text{ contenant } a\newline\text{ }\newline
+                Dire que $f$ est dérivable en $a$ c'est dire qu'il existe un réel $l$ tel que : $l=\lim_{h \to 0}\frac{f(a+h)-f(a)}{h}$ <br>
+                Il s'agit du nombre dérivé de $f$ en $a$, que l'on le note $f'(a)$ <br> <br>
 
-                \text{Si } f \text{ est dérivable en } a \text{ il existe un réel tel que: }\newline\text{ }\newline
-                f'(a)=\lim_{h\to 0}(\frac{f(a+h)-f(a)}{h})\newline\text{ }\newline
+                Il représente la "pente" d'une droite entre deux points de la courbe $\mathscr{C}$ d'abscisses $a$ et $a+h$ quand $h$ est minuscule. <br>
+                Ce sera donc le coefficient directeur de la tangente à  $\mathscr{C}$ en $a$<br><br>
 
-                \text{Soit la courbe } \mathscr{C}:y=f(x) \newline
-                \text{Soit } A \text{ le point d'abscisse } a \text{ de la courbe } C_f \newline\text{ }\newline
+                La tangente à la courbe en $a$ est donc la droite passant par le point de la courbe $\mathscr{C}$ d'abscisse $a$ et de coefficient directeur $f'(a)$<br>
 
-                \text{La tangente à la courbe en } a \text{ est la droite passant par } A \text{ et de coefficient
-                directeur } f'(a)\newline\text{ }\newline
-                \text { En faisant tendre } h \text{ vers 0, la droite ne coupe plus la courbe qu'à un point}\newline $$
+                Elle a pour équation: $y=f'(a)(x-a) + f(a)$ <br>
             </p>
             <div class="btOkEtape"
 
@@ -189,47 +188,7 @@
             </div>
         </div>
     </div>
-    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
-
-
-        <div class="btOkEtape" onclick="validatePointTE(this)"
-             data-pagetourne="true"
-             data-novalidate="true"
-             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
-        </div>
-    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
-
-
-        <div class="btOkEtape" onclick="validatePointTE(this)"
-             data-pagetourne="true"
-             data-novalidate="true"
-             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
-        </div>
-    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
-
-
-        <div class="btOkEtape" onclick="validatePointTE(this)"
-             data-pagetourne="true"
-             data-novalidate="true"
-             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-            <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
-        </div>
-    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
-
-
-        <div class="btOkEtape" onclick="validatePointTE(this)"
-             data-pagetourne="true"
-             data-novalidate="true"
-             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-            <p>↓&nbsp; Descendez pour découvrir &nbsp;↓</p>
-        </div>
-    </div>    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+  <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
         <p class="pageTitle" style="margin-top: 60vh;">Dérivée & sens de variation</p>
 
 

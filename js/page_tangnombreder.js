@@ -39,11 +39,12 @@ function updateSliderTE(distance) {
     droiteET.drawDroite(-120, -120 + distance)
     diffpointsText.innerText = `${distance}`
 
+
 }
 
 function sliderTEClick(valider = true, value = 100) {
     if (valider) {
-        updateSliderTE(0.01) // c'est jamais égal à 0 en réalité
+        updateSliderTE(0)
     } else {
         updateSliderTE(value)
     }
