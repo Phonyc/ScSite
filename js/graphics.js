@@ -65,14 +65,17 @@ class Curve {
     }
 
     drawTangente(point) {
-        let dpointstan = ""
-        for (let x of [-this.decalage - margeForCurves, this.decalage + margeForCurves]) {
-            let y = -getTangImage(point, x, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
-            dpointstan += (x + this.decalage) + ',' + y + ' ';
+        if (this.withTangente) {
+
+            let dpointstan = ""
+            for (let x of [-this.decalage - margeForCurves, this.decalage + margeForCurves]) {
+                let y = -getTangImage(point, x, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
+                dpointstan += (x + this.decalage) + ',' + y + ' ';
+            }
+            document.getElementById(this.idTangente).setAttribute("d", `M ${dpointstan}`)
+            document.getElementById(`${this.idTangente}_point`).setAttribute('cx', point + this.decalage);
+            document.getElementById(`${this.idTangente}_point`).setAttribute('cy', `${-getImage(point, this.equationCurve) + this.mihauteur}`);
         }
-        document.getElementById(this.idTangente).setAttribute("d", `M ${dpointstan}`)
-        document.getElementById(`${this.idTangente}_point`).setAttribute('cx', point + this.decalage);
-        document.getElementById(`${this.idTangente}_point`).setAttribute('cy', `${-getImage(point, this.equationCurve) + this.mihauteur}`);
 
     }
 
@@ -100,8 +103,8 @@ class Curve {
                 document.getElementById(this.idCurve).style.strokeDashoffset = `-${this.curveLength}`;
                 if (this.withTangente) {
 
-                document.getElementById(this.idTangente).style.opacity = "0";
-                document.getElementById(`${this.idTangente}_point`).style.opacity = "0";
+                    document.getElementById(this.idTangente).style.opacity = "0";
+                    document.getElementById(`${this.idTangente}_point`).style.opacity = "0";
                 }
 
             }, 0);
@@ -210,32 +213,32 @@ class Droite {
     entree(tempsAnimation = null, droite = true, points = true) {
         // if (!this.curveIsentree) {
         //     this.curveIsentree = true;
-            setTimeout(() => {
-                this.setTempsAnimation(tempsAnimation);
-                if (droite) {
-                    document.getElementById(this.idDroite).style.strokeDashoffset = "0";
-                }
-                if (points) {
-                    document.getElementById(`${this.idDroite}_P1`).style.opacity = "1";
-                    document.getElementById(`${this.idDroite}_P2`).style.opacity = "1";
-                }
-            }, 1);
+        setTimeout(() => {
+            this.setTempsAnimation(tempsAnimation);
+            if (droite) {
+                document.getElementById(this.idDroite).style.strokeDashoffset = "0";
+            }
+            if (points) {
+                document.getElementById(`${this.idDroite}_P1`).style.opacity = "1";
+                document.getElementById(`${this.idDroite}_P2`).style.opacity = "1";
+            }
+        }, 1);
         // }
     }
 
     sortie(tempsAnimation = null, droite = true, points = true) {
         // if (this.curveIsentree) {
         //     this.curveIsentree = false;
-            setTimeout(() => {
-                this.setTempsAnimation(tempsAnimation);
-                if (droite) {
-                    document.getElementById(this.idDroite).style.strokeDashoffset = `-${this.droiteLength}`;
-                }
-                if (points) {
-                    document.getElementById(`${this.idDroite}_P1`).style.opacity = "0";
-                    document.getElementById(`${this.idDroite}_P2`).style.opacity = "0";
-                }
-            }, 0);
+        setTimeout(() => {
+            this.setTempsAnimation(tempsAnimation);
+            if (droite) {
+                document.getElementById(this.idDroite).style.strokeDashoffset = `-${this.droiteLength}`;
+            }
+            if (points) {
+                document.getElementById(`${this.idDroite}_P1`).style.opacity = "0";
+                document.getElementById(`${this.idDroite}_P2`).style.opacity = "0";
+            }
+        }, 0);
         // }
     }
 
@@ -269,12 +272,15 @@ class BackGroudCurveGest {
             this.allCurves.push(tempCurveList)
         });
     }
+
     rdmTime(minMax) {
         return (Math.random() * (minMax[1] - minMax[0]) + minMax[0]).toFixed(1);
     }
+
     randomEntreeTime() {
         return this.rdmTime(this.entreeTemps) + "s";
     }
+
     randomSortieTime() {
         return this.rdmTime(this.sortieTemps) + "s";
     }

@@ -10,14 +10,13 @@
     <link rel="stylesheet" type="text/css" href="css/page_tangente.css"/>
 
 
-    <script src="js/graphics.js"></script>
-    <script src="js/maths.js"></script>
-    <script src="js/pages.js"></script>
-
-    <script src="frameworks/math.js"></script>
+    <!--    <script src="frameworks/math.js"></script>-->
     <link href="frameworks/katex.min.css" rel="stylesheet">
     <script src="frameworks/katex.min.js"></script>
     <script src="frameworks/auto-render.min.js"></script>
+    <script src="js/graphics.js"></script>
+    <script src="js/maths.js"></script>
+    <script src="js/pages.js"></script>
 
 </head>
 
@@ -54,7 +53,7 @@
         <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
 
 
-        <div class="btOkEtape"  data-novalidate="true" onclick="validatePointTE(this)"
+        <div class="btOkEtape" data-novalidate="true" onclick="validatePointTE(this)"
              style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
             <p>↓&nbsp; Descendez pour découvrir &nbsp;↓</p>
         </div>
@@ -62,11 +61,11 @@
 
     <div class="pageElement pElemP1" style="width: 100%; height: 100vh;backdrop-filter: blur(5px)">
         <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
-        <div id="expliTangenteContent" >
+        <div id="expliTangenteContent">
             <div id="expliTangenteGraphCard" class="card" style="backdrop-filter: blur(10px) saturate(0.5)">
                 <svg id="expliTangenteSvg">
-<!--                    <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>-->
-<!--                    <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>-->
+                    <!--                    <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>-->
+                    <!--                    <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>-->
                 </svg>
             </div>
             <div id="expliTangenteTextCard">
@@ -99,10 +98,11 @@
                 </div>
                 <div id="expliTangenteBougerPoint" class="EtapeExpli EtapeExpliHidden">
                     <p class="expliText">
-                        Réduisez maintenant l'écart entre les 2 points afin que leur distance se rapproche de 0 (Sans jamais l'atteindre).
+                        Réduisez maintenant l'écart entre les 2 points afin que leur distance se rapproche de 0 (Sans
+                        jamais l'atteindre).
                     </p>
                     <div class="expliTangenteslidecontainer">
-                        <input type="range" min="0" max="100" value="100" class="slider" id="sliderET">
+                        <label for="sliderET"></label><input type="range" min="0" max="100" value="100" class="slider" id="sliderET">
                     </div>
                     <div class="btOkEtape"
                          id="shwETSlid"
@@ -116,8 +116,9 @@
                 <div id="expliTangenteOptientTang" class="EtapeExpli EtapeExpliHidden" style="flex-direction: column">
                     <p class="expliText">
                         On obtient alors la tangente à la courbe au point.<br><br>
-                        Le coefficient directeur de cette droite ("pente") est le <b>nombre dérivé</b> de la fonction <u>en
-                        ce point</u>.
+                        Le coefficient directeur de cette droite ("pente") est le <b>nombre dérivé</b> de la fonction
+                        <u>en
+                            ce point</u>.
                     </p>
                     <div class="btOkEtape"
                          data-allersimple="true"
@@ -139,13 +140,16 @@
                 Soit $f$ une fonction définie sur un intervalle $I$ contenant $a$. <br>
                 Soit $\mathscr{C}:y=f(x)$ sa courbe représentative<br>
 
-                Dire que $f$ est dérivable en $a$ c'est dire qu'il existe un réel $l$ tel que : $l=\lim_{h \to 0}\frac{f(a+h)-f(a)}{h}$ <br>
+                Dire que $f$ est dérivable en $a$ c'est dire qu'il existe un réel $l$ tel que : $l=\lim_{h \to
+                0}\frac{f(a+h)-f(a)}{h}$ <br>
                 Il s'agit du nombre dérivé de $f$ en $a$, que l'on le note $f'(a)$ <br> <br>
 
-                Il représente la "pente" d'une droite entre deux points de la courbe $\mathscr{C}$ d'abscisses $a$ et $a+h$ quand $h$ est minuscule. <br>
-                Ce sera donc le coefficient directeur de la tangente à  $\mathscr{C}$ en $a$<br><br>
+                Il représente la "pente" d'une droite entre deux points de la courbe $\mathscr{C}$ d'abscisses $a$ et
+                $a+h$ quand $h$ est minuscule. <br>
+                Ce sera donc le coefficient directeur de la tangente à $\mathscr{C}$ en $a$<br><br>
 
-                La tangente à la courbe en $a$ est donc la droite passant par le point de la courbe $\mathscr{C}$ d'abscisse $a$ et de coefficient directeur $f'(a)$<br>
+                La tangente à la courbe en $a$ est donc la droite passant par le point de la courbe $\mathscr{C}$
+                d'abscisse $a$ et de coefficient directeur $f'(a)$<br>
 
                 Elle a pour équation: $y=f'(a)(x-a) + f(a)$ <br>
                 <br>
@@ -171,9 +175,8 @@
 </div>
 
 
-<script src="js/consts.js"></script>
-<script src="js/explications.js"></script>
 <script src="js/main.js"></script>
+<script src="js/explications.js"></script>
 
 <script>
 

@@ -1,1 +1,0 @@
-let margeForCurves = 30

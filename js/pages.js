@@ -63,7 +63,7 @@ class PageScroller {
         }
     }
 
-    validatePoint(button, scrollup, byScroll=false) {
+    validatePoint(button, scrollup, byScroll = false) {
         let valider = !(button.dataset["novalidate"] === "true")
         let pageTourne = button.dataset["pagetourne"] === "true"
         let goTop = button.dataset["gotop"] === "true"
@@ -81,9 +81,9 @@ class PageScroller {
         } else {
             nextIndex = Math.max(btIndex - 1, 0);
         }
-        let allerSimple = button.dataset["allersimple"] ==="true"
+        let allerSimple = button.dataset["allersimple"] === "true"
         if (scrollup && allerSimple) {
-            for (let i = btIndex; i >= 0; i-=1) {
+            for (let i = btIndex; i >= 0; i -= 1) {
                 if (this.elements[i].dataset["allersimple"] !== "true") {
                     nextIndex = i;
                     break;
@@ -102,14 +102,15 @@ class PageScroller {
         let expliId = button.parentNode.id;
         if (!(allerSimple && nextIndex < btIndex) || !allerSimple || (scrollup && nextIndex < btIndex)) {
 
+            // TODO Si vraiment très proches mettre à la page (0.05 près)
             let pageToScroll = Math.floor(nextElement.getBoundingClientRect().top / window.innerHeight);
-            let endroit_to_Scroll = document.getElementById(this.pageContainerId).scrollTop + pageToScroll * window.innerHeight;
+            let actualTop = Math.round(document.getElementById(this.pageContainerId).scrollTop / window.innerHeight) * window.innerHeight
+            let endroit_to_Scroll = actualTop + pageToScroll * window.innerHeight;
             let numPageReel = Math.floor(endroit_to_Scroll / window.innerHeight);
-            let numPageReelOld = Math.floor(document.getElementById(this.pageContainerId).scrollTop / window.innerHeight);
+            let numPageReelOld = Math.floor(actualTop / window.innerHeight);
             if (pageToScroll !== 0) {
                 this.backgroundGest.drawCurves(numPageReel);
                 this.backgroundGest.removeCurves(numPageReelOld);
-
             }
             document.getElementById(this.pageContainerId).scrollTo(0, endroit_to_Scroll)
 
@@ -118,7 +119,6 @@ class PageScroller {
             this.setActualElement(nextIndex);
         }
         nextElement.parentElement.classList.remove("EtapeExpliHidden");
-
 
 
         if (aValider && !scrollup) {
