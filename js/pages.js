@@ -102,7 +102,6 @@ class PageScroller {
         let expliId = button.parentNode.id;
         if (!(allerSimple && nextIndex < btIndex) || !allerSimple || (scrollup && nextIndex < btIndex)) {
 
-            // TODO Si vraiment très proches mettre à la page (0.05 près)
             let pageToScroll = Math.floor(nextElement.getBoundingClientRect().top / window.innerHeight);
             let actualTop = Math.round(document.getElementById(this.pageContainerId).scrollTop / window.innerHeight) * window.innerHeight
             let endroit_to_Scroll = actualTop + pageToScroll * window.innerHeight;
