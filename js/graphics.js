@@ -53,7 +53,6 @@ class Curve {
                 this.mintanX = this.findMinXTangente()
                 this.maxtanX = this.findMaxTangente()
                 this.tangentePosition = this.mintanX;
-                this.animTangente();
             }
         }
 
@@ -79,14 +78,15 @@ class Curve {
 
     entree(tempsAnimation = null) {
         if (!this.curveIsentree) {
+            this.animTangente();
             this.curveIsentree = true;
             setTimeout(() => {
                 this.setTempsAnimation(tempsAnimation);
                 document.getElementById(this.idCurve).style.strokeDashoffset = "0";
                 if (this.withTangente) {
 
-                document.getElementById(this.idTangente).style.opacity = "1";
-                document.getElementById(`${this.idTangente}_point`).style.opacity = "1";
+                    document.getElementById(this.idTangente).style.opacity = "1";
+                    document.getElementById(`${this.idTangente}_point`).style.opacity = "1";
                 }
             }, 1);
         }
@@ -161,8 +161,8 @@ class Droite {
 
         // Initialiser la courbe
         this.decalage = this.svgSupport.width.baseVal.value / 2;
-        let hauteur = this.svgSupport.height.baseVal.value;
-        this.mihauteur = hauteur / 2;
+        this.hauteur = this.svgSupport.height.baseVal.value;
+        this.mihauteur = this.hauteur / 2;
 
         // Ajouter les droites
         this.svgSupport.innerHTML += `<path id="${this.idDroite}" fill="none" class="droite" style="${style}"/>`
@@ -173,9 +173,9 @@ class Droite {
         this.drawDroite(x1, x2);
 
         // Régler son pointillé pour qu'elle soit hors de l'écran
-        this.droiteLength = document.getElementById(this.idDroite).getTotalLength();
-        document.getElementById(this.idDroite).style.strokeDasharray = this.droiteLength;
-        document.getElementById(this.idDroite).style.strokeDashoffset = this.droiteLength;
+        this.droiteLength = Math.ceil(Math.sqrt(this.hauteur ** 2 + (this.decalage * 2) ** 2));
+        document.getElementById(this.idDroite).style.strokeDasharray = this.droiteLength.toString();
+        document.getElementById(this.idDroite).style.strokeDashoffset = this.droiteLength.toString();
         this.setTempsAnimation("0s");
 
     }
@@ -195,6 +195,7 @@ class Droite {
             }
             dpoints += (x + this.decalage) + ',' + y + ' ';
         }
+
 
         document.getElementById(this.idDroite).setAttribute("d", `M ${dpoints}`)
 
@@ -248,6 +249,46 @@ class Droite {
             document.getElementById(`${this.idDroite}_P1`).style.transition = `opacity ${tempsAnimation} linear`;
             document.getElementById(`${this.idDroite}_P2`).style.transition = `opacity ${tempsAnimation} linear`;
         }
+    }
+
+}
+
+class BackGroudCurveGest {
+    constructor(svgSupportId, equationsList, entreeTemps, sortieTemps, withTangentes) {
+        this.entreeTemps = entreeTemps;
+        this.sortieTemps = sortieTemps;
+        this.svgSupportId = svgSupportId;
+        this.allCurves = [];
+        let i = 0;
+        equationsList.forEach((equationList) => {
+            let tempCurveList = []
+            equationList.forEach((equation) => {
+                tempCurveList.push(new Curve(this.svgSupportId, equation, "3s", withTangentes.includes(i)))
+                i++
+            })
+            this.allCurves.push(tempCurveList)
+        });
+    }
+    rdmTime(minMax) {
+        return (Math.random() * (minMax[1] - minMax[0]) + minMax[0]).toFixed(1);
+    }
+    randomEntreeTime() {
+        return this.rdmTime(this.entreeTemps) + "s";
+    }
+    randomSortieTime() {
+        return this.rdmTime(this.sortieTemps) + "s";
+    }
+
+    drawCurves(page) {
+        this.allCurves[page].forEach((curve) => {
+            curve.entree(this.randomEntreeTime());
+        })
+    }
+
+    removeCurves(page) {
+        this.allCurves[page].forEach((curve) => {
+            curve.sortie(this.randomSortieTime());
+        })
     }
 
 }

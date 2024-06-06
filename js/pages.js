@@ -1,19 +1,21 @@
 class PageScroller {
-    constructor(pageContainerId, indicatorId, actions) {
-        this.actions = actions;
+    constructor(pageContainerId, indicatorId, actions, backgroundGest) {
         this.canPassToNext = true;
+        this.actions = actions;
+        this.backgroundGest = backgroundGest;
         this.indicatorId = indicatorId;
         this.timerReset = null; // Timer pour reset la scrollValue
         this.scrollBeforePass = 300; // combien scroller avant de considérer qu'il faut passer à la suite
         this.pageContainerId = pageContainerId;
         this.elements = Array.from(document.getElementById(this.pageContainerId).querySelectorAll(".btOkEtape"));
-
         this.actualElement = 0;
-
         this.scrollValue = 0; // Valeur du scroll (en dessous scrollBeforePass, au dessus -> passToNext)
         this.scrollSens = 1; // Sens du scroll (1 = descendre, -1 = monter)
         this.updateSlideIndicator(0);
         this.indexLastDiscovered = 0
+
+        document.getElementById(this.pageContainerId).scrollTo(0, 0)
+        this.backgroundGest.drawCurves(0);
     }
 
     passToNext() {
@@ -101,8 +103,15 @@ class PageScroller {
         if (!(allerSimple && nextIndex < btIndex) || !allerSimple || (scrollup && nextIndex < btIndex)) {
 
             let pageToScroll = Math.floor(nextElement.getBoundingClientRect().top / window.innerHeight);
+            let endroit_to_Scroll = document.getElementById(this.pageContainerId).scrollTop + pageToScroll * window.innerHeight;
+            let numPageReel = Math.floor(endroit_to_Scroll / window.innerHeight);
+            let numPageReelOld = Math.floor(document.getElementById(this.pageContainerId).scrollTop / window.innerHeight);
+            if (pageToScroll !== 0) {
+                this.backgroundGest.drawCurves(numPageReel);
+                this.backgroundGest.removeCurves(numPageReelOld);
 
-            document.getElementById(this.pageContainerId).scrollTo(0, document.getElementById(this.pageContainerId).scrollTop + pageToScroll * window.innerHeight)
+            }
+            document.getElementById(this.pageContainerId).scrollTo(0, endroit_to_Scroll)
 
         }
         if (!(allerSimple && nextIndex < this.indexLastDiscovered) || !allerSimple || (scrollup && nextIndex < this.indexLastDiscovered || pageTourne)) {

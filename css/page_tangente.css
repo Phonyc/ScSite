@@ -57,7 +57,9 @@
     height: 5px;
     border-radius: 40px;
     background-color: #00000000;
-    box-shadow: 0 0 5px #76ABAE;
+    /*box-shadow: 0 0 5px #76ABAE;*/
+    box-shadow: 0 0 5px #ad5f5f;
+    /*box-shadow: 0 0 5px #76ABAE;*/
     margin-right: 20px;
 }
 
@@ -68,7 +70,8 @@
     height: 20px;
     border-radius: 50%;
     background: #000000;
-    box-shadow: 0 0 5px #ffffff;
+    /*box-shadow: 0 0 5px #ffffff;*/
+    box-shadow: 0 0 5px #ad5f5f;
     cursor: pointer;
 }
 
@@ -77,6 +80,7 @@
     height: 20px;
     border-radius: 50%;
     background: #000000;
-    box-shadow: 0 0 5px #ffffff;
+    /*box-shadow: 0 0 5px #ffffff;*/
+    box-shadow: 0 0 5px #ad5f5f;
     cursor: pointer;
 }
