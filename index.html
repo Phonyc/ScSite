@@ -6,8 +6,6 @@
     <title>ScSite</title>
 
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="css/page_accueil.css"/>
-    <link rel="stylesheet" type="text/css" href="css/sommaire.css"/>
     <link rel="stylesheet" type="text/css" href="css/pages.css"/>
     <link rel="stylesheet" type="text/css" href="css/page_tangente.css"/>
 
@@ -42,35 +40,8 @@
 <svg id="svgBackCurve">
 </svg>
 
-<!-- Page 1 -->
-<div class="cardContainer">
-    <div class="card">
-        <p class="title">La Dérivation</p>
-        <div id="scrollToDiscover">
-            <p>Cliquez pour découvrir</p>
-        </div>
-    </div>
-</div>
-
-<!-- Page 2 -->
-<div class="cardContainer" style="display: block; overflow: hidden">
-    <div id="sommaireCard1" class="card sommaireCard sommaireCard1" onclick="goToCard1(this)">
-        <p class="sommaireCardTitle">Tangente & nombre dérivé</p>
-        <img class="cardIllustration" src="img/tangente.png">
-    </div>
-    <div id="sommaireCard2" class="card sommaireCard sommaireCard2" onclick="goToCard1(this)">
-        <p class="sommaireCardTitle">Dérivées & sens de variation</p>
-        <img class="cardIllustration" src="img/signe.svg">
-    </div>
-    <div id="sommaireCard3" class="card sommaireCard sommaireCard3" onclick="goToCard1(this)">
-        <p class="sommaireCardTitle">Dérivées de fonctions courantes</p>
-    </div>
-</div>
-
-<!-- Page 3 -->
 <div class="cardContainer pageContainer" id="pageTE">
-    <div id="btFermerP1" class="overElement btFermer"
-         onclick="window.scrollTo(0, window.innerHeight);">
+    <div id="btFermerP1" class="overElement btFermer">
         <div class="ligneCroix"></div>
         <div class="ligneCroix"></div>
     </div>
@@ -79,20 +50,20 @@
         <div class="scrollToPassBar slideIndicator"></div>
         <div class="scrollToPassBar passIndicator"></div>
     </div>
-    <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
+    <div class="pageElement" id="btFirst" style="width: 100%; height: 100vh;flex-direction: column">
         <p class="pageTitle" style="margin-top: 60vh;">Tangente & nombre dérivé</p>
 
 
-        <div class="btOkEtape" data-novalidate="true" onclick="validatePointTE(this)"
+        <div class="btOkEtape"  data-novalidate="true" onclick="validatePointTE(this)"
              style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
             <p>↓&nbsp; Scrollez pour découvrir &nbsp;↓</p>
         </div>
     </div>
 
-    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;">
+    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;backdrop-filter: blur(5px)">
         <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Tangente</p>
-        <div id="expliTangenteContent">
-            <div id="expliTangenteGraphCard" class="card">
+        <div id="expliTangenteContent" >
+            <div id="expliTangenteGraphCard" class="card" style="backdrop-filter: blur(10px) saturate(0.5)">
                 <svg id="expliTangenteSvg">
 <!--                    <path id="expliTangenteCurveAxeAb" class="expliTangenteCurveAxe" fill="none" d=""/>-->
 <!--                    <path id="expliTangenteCurveAxeOr" class="expliTangenteCurveAxe" fill="none" d=""/>-->
@@ -177,35 +148,31 @@
                 La tangente à la courbe en $a$ est donc la droite passant par le point de la courbe $\mathscr{C}$ d'abscisse $a$ et de coefficient directeur $f'(a)$<br>
 
                 Elle a pour équation: $y=f'(a)(x-a) + f(a)$ <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </p>
             <div class="btOkEtape"
 
                  data-pagetourne="true"
                  data-novalidate="true"
-                 style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 300px"
+                 data-gotop="true"
+                 data-gotopbyscroll="false"
+                 style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
                  onclick="validatePointTE(this)">
-                <p>↓&nbsp; Dérivée et sens de variation &nbsp;↓</p>
+                <p>↑&nbsp;&nbsp; Retour en haut &nbsp;&nbsp;↑</p>
             </div>
         </div>
     </div>
-  <div class="pageElement" style="width: 100%; height: 100vh;flex-direction: column">
-        <p class="pageTitle" style="margin-top: 60vh;">Dérivée & sens de variation</p>
 
-
-        <div class="btOkEtape" onclick="validatePointTE(this)"
-             data-pagetourne="true"
-             data-novalidate="true"
-             style="margin-bottom: 50vh;display: flex;justify-content: center;align-items: center;width: 250px">
-            <p>↓&nbsp; Descendez pour découvrir &nbsp;↓</p>
-        </div>
-    </div>
 </div>
 
 
 <script src="js/consts.js"></script>
-<script src="js/page_accueil.js"></script>
-<script src="js/page_sommaire.js"></script>
-<script src="js/page_tangnombreder.js"></script>
+<script src="js/explications.js"></script>
 <script src="js/main.js"></script>
 
 <script>

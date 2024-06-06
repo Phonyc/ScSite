@@ -32,21 +32,7 @@
     height: 100vh;
 }
 
-#expliTangenteCurveMaincurve {
-    stroke: #76ABAE;
-    stroke-width: 5px;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 0;
-    --entrdashoffset-tangente-expli: 0;
-}
 
-#expliTangenteCurveTangente {
-    stroke: #ad5151;
-    stroke-width: 5px;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 0;
-    --entrdashoffset-tangente-expli-tang: 0;
-}
 
 .expliTangenteCurveAxe {
     stroke: #333333;
@@ -57,24 +43,7 @@
 
 }
 
-@keyframes entreeTangEx {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
 
-
-@keyframes sortieTangEx {
-    to {
-        stroke-dashoffset: var(--entrdashoffset-tangente-expli);
-    }
-}
-
-@keyframes sortieTangExTang {
-    to {
-        stroke-dashoffset: var(--entrdashoffset-tangente-expli-tang);
-    }
-}
 
 #expliTangenteTextCard {
     flex: 1;

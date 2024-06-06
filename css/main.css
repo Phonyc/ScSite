@@ -78,3 +78,6 @@ body {
     transition: opacity 1s;
     opacity: 0;
 }
+.tangentePointExpli {
+    fill: #121111;
+}

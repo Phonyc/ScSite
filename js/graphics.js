@@ -150,7 +150,8 @@ class Curve {
 }
 
 class Droite {
-    constructor(svgSupportId, supportEquation, x1, x2, defaultTempsAnimation = "1s", style = "") {
+    constructor(svgSupportId, supportEquation, x1, x2, defaultTempsAnimation = "1s", style = "", customPointClass = "") {
+        this.customPointClass = customPointClass;
         this.supportEquation = supportEquation;
         this.deriveeEquation = getDerivee(this.supportEquation);
         this.curveIsentree = false;
@@ -165,8 +166,8 @@ class Droite {
 
         // Ajouter les droites
         this.svgSupport.innerHTML += `<path id="${this.idDroite}" fill="none" class="droite" style="${style}"/>`
-        this.svgSupport.innerHTML += `<circle id="${this.idDroite}_P1" class="tangentePoint" r="5"></circle>`
-        this.svgSupport.innerHTML += `<circle id="${this.idDroite}_P2" class="tangentePoint" r="5"></circle>`
+        this.svgSupport.innerHTML += `<circle id="${this.idDroite}_P1" class="tangentePoint ${this.customPointClass}" r="5"></circle>`
+        this.svgSupport.innerHTML += `<circle id="${this.idDroite}_P2" class="tangentePoint ${this.customPointClass}" r="5"></circle>`
 
 
         this.drawDroite(x1, x2);

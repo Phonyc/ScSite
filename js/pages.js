@@ -17,8 +17,7 @@ class PageScroller {
     }
 
     passToNext() {
-
-    this.validatePoint(this.elements[this.actualElement], this.scrollSens === -1);
+        this.validatePoint(this.elements[this.actualElement], this.scrollSens === -1, true);
     }
 
     setActualElement(value) {
@@ -62,15 +61,21 @@ class PageScroller {
         }
     }
 
-    validatePoint(button, scrollup) {
+    validatePoint(button, scrollup, byScroll=false) {
         let valider = !(button.dataset["novalidate"] === "true")
         let pageTourne = button.dataset["pagetourne"] === "true"
+        let goTop = button.dataset["gotop"] === "true"
+        let goTopbyScroll = button.dataset["gotopbyscroll"] === "true"
         let aValider = !button.classList.contains("btOkEtapeValide") && valider;
         let btIndex = this.elements.indexOf(button)
 
         let nextIndex;
         if (aValider || !scrollup) {
+
             nextIndex = Math.min(btIndex + 1, this.elements.length - 1);
+            if ((goTop && !byScroll) || (goTopbyScroll)) {
+                nextIndex = 0;
+            }
         } else {
             nextIndex = Math.max(btIndex - 1, 0);
         }
@@ -85,17 +90,20 @@ class PageScroller {
 
         }
 
-        if (!scrollup && !valider ) {
+        if (!scrollup && !valider && !goTop) {
             let maxIndexInNextPage = this.elements.findLastIndex(e => Math.floor(e.getBoundingClientRect().top / window.innerHeight) === 1);
             nextIndex = Math.min(Math.max(this.indexLastDiscovered, nextIndex), maxIndexInNextPage);
         }
 
         let nextElement = this.elements[nextIndex];
         this.indexLastDiscovered = Math.max(nextIndex, this.indexLastDiscovered);
+        let expliId = button.parentNode.id;
         if (!(allerSimple && nextIndex < btIndex) || !allerSimple || (scrollup && nextIndex < btIndex)) {
 
             let pageToScroll = Math.floor(nextElement.getBoundingClientRect().top / window.innerHeight);
+
             document.getElementById(this.pageContainerId).scrollTo(0, document.getElementById(this.pageContainerId).scrollTop + pageToScroll * window.innerHeight)
+
         }
         if (!(allerSimple && nextIndex < this.indexLastDiscovered) || !allerSimple || (scrollup && nextIndex < this.indexLastDiscovered || pageTourne)) {
             this.setActualElement(nextIndex);
@@ -103,7 +111,7 @@ class PageScroller {
         nextElement.parentElement.classList.remove("EtapeExpliHidden");
 
 
-        let expliId = button.parentNode.id;
+
         if (aValider && !scrollup) {
             button.classList.add("btOkEtapeValide");
             if (this.actions.has(expliId)) {
