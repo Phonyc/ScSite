@@ -17,14 +17,38 @@ let listCurves = [
         `((314 - x) * (-476 - x) * (271 - x) * (-172 - x) * (201 - x) * (484 - x) * (264 - x) * (-460 - x) * (-350 - x)) / (100000000000000000*1280)`,
         `((405 - x) * (195 - x) * (27 - x) * (166 - x) * (331 - x) * (-236 - x) * (-181 - x)) / (100000000000*1280)`],
     [`((-351 - x) * (346 - x) * (-312 - x) * (387 - x) * (253 - x) * (-211 - x) * (-183 - x) * (498 - x) * (365 - x)) / (100000000000000000*1280) - ${window.innerHeight / 4}`,
-        `((-457 - x) * (48 - x) * (219 - x) * (-103 - x) * (-468 - x) * (-253 - x) * (125 - x)) / (100000000000*1280) - ${window.innerHeight / 5}`,
-        `((259 - x) * (468 - x) * (-127 - x) * (-19 - x) * (192 - x)) / (1000000*1280) - ${window.innerHeight / 5}`,
-        `((350 - x) * (288 - x) * (427 - x) * (-111 - x) * (32 - x)) / (1000000*1280) - ${window.innerHeight / 5}`,
-        `((-107 - x) * (-489 - x) * (-212 - x) * (-60 - x) * (-225 - x)) / (1000000*1280) - ${window.innerHeight / 5}`]
+    `((-457 - x) * (48 - x) * (219 - x) * (-103 - x) * (-468 - x) * (-253 - x) * (125 - x)) / (100000000000*1280) - ${window.innerHeight / 5}`,
+    `((259 - x) * (468 - x) * (-127 - x) * (-19 - x) * (192 - x)) / (1000000*1280) - ${window.innerHeight / 5}`,
+    `((350 - x) * (288 - x) * (427 - x) * (-111 - x) * (32 - x)) / (1000000*1280) - ${window.innerHeight / 5}`,
+    `((-107 - x) * (-489 - x) * (-212 - x) * (-60 - x) * (-225 - x)) / (1000000*1280) - ${window.innerHeight / 5}`]
 ]
 
-let bgGest = new BackGroudCurveGest("svgBackCurve", listCurves, [1, 5], [1, 2], [0])
+let bgGest;
+let pageScrollerTangExpli;
+function initMainGests() {
+    bgGest = new BackGroudCurveGest("svgBackCurve", listCurves, [1, 5], [1, 2], [0])
+    
+    pageScrollerTangExpli = new PageScroller("pageTE", "scrollIndicatorTang", actions, bgGest);
 
-let pageScrollerTangExpli = new PageScroller("pageTE", "scrollIndicatorTang", actions, bgGest);
+}
 
-document.getElementById("pageTE").addEventListener('wheel', pageScrollerTangExpli.onScroll.bind(pageScrollerTangExpli));
+setTimeout( () => {
+    initMainGests()
+    initCurvesExpli();
+    document.getElementById("pageTE").addEventListener('wheel', pageScrollerTangExpli.onScroll.bind(pageScrollerTangExpli));
+    document.getElementById("btFermerP1").addEventListener('click', changeRadius);
+}, 100)
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    renderMathInElement(document.body, {
+        delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+        ],
+        throwOnError: false
+    });
+});
+

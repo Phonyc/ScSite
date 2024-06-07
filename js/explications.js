@@ -1,6 +1,12 @@
-let equationET = "((464 - x) * (112 - x) * (-255 - x) * (-446 - x) * (-21 - x) * (168 - x) * (-373 - x) * (-115 - x) * (427 - x) * (293 - x)) / (10000000000000000000*1280)";
-let curveET = new Curve("expliTangenteSvg", equationET, "2s", false, undefined, undefined, "stroke: #e5c185")
-let droiteET = new Droite("expliTangenteSvg", equationET, -120, -20, "2s", "", "tangentePointExpli")
+let equationET;
+let curveET;
+let droiteET;
+function initCurvesExpli() {
+
+    equationET = "((464 - x) * (112 - x) * (-255 - x) * (-446 - x) * (-21 - x) * (168 - x) * (-373 - x) * (-115 - x) * (427 - x) * (293 - x)) / (10000000000000000000*1280)";
+    curveET = new Curve("expliTangenteSvg", equationET, "2s", false, undefined, undefined, "stroke: #e5c185")
+    droiteET = new Droite("expliTangenteSvg", equationET, -120, -20, "2s", "", "tangentePointExpli")
+}
 
 
 function validatePointTE(point) {

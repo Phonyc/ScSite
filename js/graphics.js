@@ -286,15 +286,35 @@ class BackGroudCurveGest {
     }
 
     drawCurves(page) {
-        this.allCurves[page].forEach((curve) => {
-            curve.entree(this.randomEntreeTime());
-        })
+        if (page < this.allCurves.length) {
+            this.allCurves[page].forEach((curve) => {
+                curve.entree(this.randomEntreeTime());
+            })
+        }
     }
 
     removeCurves(page) {
-        this.allCurves[page].forEach((curve) => {
-            curve.sortie(this.randomSortieTime());
-        })
+
+        if (page < this.allCurves.length) {
+            this.allCurves[page].forEach((curve) => {
+                curve.sortie(this.randomSortieTime());
+            })
+        }
     }
 
+}
+
+
+function changeRadius() {
+    let actRad = getComputedStyle(document.querySelector("body")).getPropertyValue("--default-border-radius")
+    if (actRad === "4px") {
+        document.querySelector("body").style.setProperty("--default-border-radius", '20px')
+        document.getElementById("ce").style.display = "none"
+        document.getElementById("re").style.display = "block"
+    } else {
+        document.querySelector("body").style.setProperty("--default-border-radius", '4px')
+        document.getElementById("ce").style.display = "block"
+        document.getElementById("re").style.display = "none"
+
+    }
 }

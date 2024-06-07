@@ -41,8 +41,10 @@
 
 <div class="cardContainer pageContainer" id="pageTE">
     <div id="btFermerP1" class="overElement btFermer">
-        <div class="ligneCroix"></div>
-        <div class="ligneCroix"></div>
+        <svg style="width: 100%;height:100%">
+        <path id="re" fill="white" d="M -8 0 A 1 1 0 0 0 8 0 A 1 1 0 0 0 -8 0" style="stroke: white;stroke-width:3px;transform: translate(50%, 50%)"/>
+        <path id="ce" fill="white" d="M -8 -8 H 8 V 8 H -8 V -8" style="display: none;stroke: white;stroke-width:3px;transform: translate(50%, 50%)"/>
+        </svg>
     </div>
     <div id="scrollIndicatorTang" class="overElement scrollToPass">
         <div class="scrollToPassBar" style="z-index: 10"></div>
@@ -163,6 +165,32 @@
 
                  data-pagetourne="true"
                  data-novalidate="true"
+                 data-gotop="false"
+                 data-gotopbyscroll="false"
+                 style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 175px"
+                 onclick="validatePointTE(this)">
+                <p>↓&nbsp;&nbsp; Animations &nbsp;&nbsp;↓</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pageElement pElemP1" style="width: 100%; height: 100vh;backdrop-filter: blur(3px)">
+        <p class="pageTitle" style="margin-bottom: 20px; margin-top: 20px">Animations</p>
+        <div class="expliNDeContent" style="flex-direction: column; align-items: center">
+            <p class="expliText" style="flex: none">
+
+               Quelques animations autour de la dérivée<br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </p>
+            <div class="btOkEtape"
+
+                 data-pagetourne="true"
+                 data-novalidate="true"
                  data-gotop="true"
                  data-gotopbyscroll="false"
                  style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 200px"
@@ -178,23 +206,6 @@
 <script src="js/main.js"></script>
 <script src="js/explications.js"></script>
 
-<script>
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false},
-                {left: '\\[', right: '\\]', display: true}
-            ],
-            throwOnError: false
-        });
-    });
-
-</script>
 </body>
 
 </html>

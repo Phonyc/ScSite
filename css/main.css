@@ -9,9 +9,11 @@
     scrollbar-width: none;
     color: white;
     font-family: nunito, serif;
+    transition: border-radius 0.5s;
 }
 
 body {
+    --default-border-radius : 20px;
 
     margin: 0;
     height: 100vh;
@@ -34,7 +36,7 @@ body {
     background: rgb(150, 150, 150, 0.35);
     backdrop-filter: blur(4px);
     border: 1px solid rgb(150, 150, 150, 0.75);
-    border-radius: 15px;
+    border-radius: var(--default-border-radius);
     width: 90%;
     height: 90vh;
     display: flex;

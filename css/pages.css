@@ -16,8 +16,6 @@
 .pageTitle {
     font-size: 50pt;
     color: white;
-
-
     text-shadow: 0 0 25px #76ABAE;
     transition: 0.8s;
 }
@@ -30,7 +28,7 @@
 .overElement {
     height: 40px;
     min-width: 40px;
-    border-radius: 20px;
+    border-radius: var(--default-border-radius);
     z-index: 1;
     margin: 20px;
     box-shadow: 0 0 5px #76ABAE;
@@ -61,7 +59,7 @@
     height: var(--height);
     background: white;
     position: absolute;
-    border-radius: 20%;
+    border-radius: calc(var(--default-border-radius) * 2);
     top: calc(50% - (var(--height) / 2));
     transition: 0.5s;
     z-index: 2;
@@ -83,7 +81,7 @@
     width: var(--width);
     background: white;
     position: absolute;
-    border-radius: 40px;
+    border-radius: calc(var(--default-border-radius) * 2);
     top: 20px;
     left: calc(50% - (var(--width) / 2));
     transition: 0.3s;
@@ -114,7 +112,7 @@
 .slideIndicator {
     --avancee-slide: 0;
     --width: 7px;
-    border-radius: 40px;
+    border-radius: calc(var(--default-border-radius) * 2);
     background: #f43020;
     height: calc(var(--passIndicatorHeight) * var(--avancee-slide));
     z-index: 100;
@@ -123,7 +121,7 @@
 .btOkEtape {
     height: 40px;
     width: 40px;
-    border-radius: 20px;
+    border-radius: var(--default-border-radius);
     margin-right: 20px;
     /*box-shadow: 0 0 5px #ad5f5f;*/
     /*box-shadow: 0 0 5px #76ABAE;*/
@@ -145,7 +143,7 @@
     height: 3px;
     position: relative;
     background: white;
-    border-radius: 20%;
+    border-radius: calc(var(--default-border-radius) * 2);
     transition: 0.5s;
     opacity: 1;
 }

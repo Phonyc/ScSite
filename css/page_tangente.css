@@ -55,7 +55,7 @@
 .slider {
     -webkit-appearance: none;
     height: 5px;
-    border-radius: 40px;
+    border-radius: calc(var(--default-border-radius) * 2);
     background-color: #00000000;
     /*box-shadow: 0 0 5px #76ABAE;*/
     box-shadow: 0 0 5px #ad5f5f;
