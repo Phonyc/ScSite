@@ -12,9 +12,10 @@ class PageScroller {
         this.scrollValue = 0; // Valeur du scroll (en dessous scrollBeforePass, au dessus -> passToNext)
         this.scrollSens = 1; // Sens du scroll (1 = descendre, -1 = monter)
         this.updateSlideIndicator(0);
-        this.indexLastDiscovered = 0
+        this.indexLastDiscovered = 0;
 
         document.getElementById(this.pageContainerId).scrollTo(0, 0)
+        // document.getElementById(this.pageContainerId).scrollTo(0, window.innerHeight * 4)
         this.backgroundGest.drawCurves(0);
     }
 

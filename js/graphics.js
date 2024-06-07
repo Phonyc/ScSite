@@ -15,7 +15,7 @@ function createQuadrillage() {
 }
 
 class Curve {
-    constructor(svgSupportId, equationCurve, defaultTempsAnimation = "1s", withTangente = false, tangentePoint = undefined, tangenteVitesse = 1, style = "") {
+    constructor(svgSupportId, equationCurve, {defaultTempsAnimation = "1s", withTangente = false, tangentePoint = undefined, tangenteVitesse = 1, style = "", scaleX = 1, decY = 0}) {
         this.tangenteInterval = null;
         this.curveIsentree = false;
         this.withTangente = withTangente;
@@ -24,6 +24,8 @@ class Curve {
         this.defaultTempsAnimation = defaultTempsAnimation;
         this.idCurve = getTimestamp(true);
         this.idTangente = this.idCurve + "_tangente"
+        this.scaleX = scaleX;
+        this.decY = decY;
         // Initialiser la courbe
 
         this.dpoints = "";
@@ -32,9 +34,9 @@ class Curve {
         this.mihauteur = hauteur / 2;
 
         for (let x = -this.decalage - margeForCurves; x < this.decalage + margeForCurves; x++) {
-            let y = -getImage(x, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
-            if (y < hauteur + margeForCurves && y > -margeForCurves) { // On dessine pas si la courbe est trop en dehors du cadre
-                this.dpoints += (x + this.decalage) + ',' + y + ' ';
+            let y = -getImage(x / this.scaleX, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
+            if (y < hauteur + margeForCurves && y > -margeForCurves - this.decY) { // On dessine pas si la courbe est trop en dehors du cadre
+                this.dpoints += (x + this.decalage)  + ',' + (y + this.decY) + ' ';
             }
         }
         // Ajouter les courbes
@@ -69,8 +71,8 @@ class Curve {
 
             let dpointstan = ""
             for (let x of [-this.decalage - margeForCurves, this.decalage + margeForCurves]) {
-                let y = -getTangImage(point, x, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
-                dpointstan += (x + this.decalage) + ',' + y + ' ';
+                let y = -getTangImage(point, x / this.scaleX, this.equationCurve) + this.mihauteur; // - & + On met la courbe au milieu et dans le bon sens
+                dpointstan += (x + this.decalage) + ',' + y + this.decY + ' ';
             }
             document.getElementById(this.idTangente).setAttribute("d", `M ${dpointstan}`)
             document.getElementById(`${this.idTangente}_point`).setAttribute('cx', point + this.decalage);
@@ -266,7 +268,7 @@ class BackGroudCurveGest {
         equationsList.forEach((equationList) => {
             let tempCurveList = []
             equationList.forEach((equation) => {
-                tempCurveList.push(new Curve(this.svgSupportId, equation, "3s", withTangentes.includes(i)))
+                tempCurveList.push(new Curve(this.svgSupportId, equation, {"withTangente": withTangentes.includes(i)}));
                 i++
             })
             this.allCurves.push(tempCurveList)

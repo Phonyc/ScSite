@@ -33,7 +33,6 @@
 }
 
 
-
 .expliTangenteCurveAxe {
     stroke: #333333;
     stroke-width: 5px;
@@ -44,7 +43,6 @@
 }
 
 
-
 #expliTangenteTextCard {
     flex: 1;
 }
@@ -52,6 +50,7 @@
 .expliTangenteslidecontainer {
     margin: 10px;
 }
+
 .slider {
     -webkit-appearance: none;
     height: 5px;
@@ -83,4 +82,10 @@
     /*box-shadow: 0 0 5px #ffffff;*/
     box-shadow: 0 0 5px #ad5f5f;
     cursor: pointer;
+}
+
+.legendeText {
+    font-size: 14pt;
+    margin: 5px;
+
 }

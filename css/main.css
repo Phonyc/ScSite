@@ -1,6 +1,6 @@
 @font-face {
-  font-family: nunito;
-  src: url(../fonts/nunito.ttf);
+    font-family: nunito;
+    src: url(../fonts/nunito.ttf);
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-    --default-border-radius : 20px;
+    --default-border-radius: 20px;
 
     margin: 0;
     height: 100vh;
@@ -42,7 +42,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:  column;
+    flex-direction: column;
 }
 
 
@@ -65,21 +65,25 @@ body {
     stroke: #76ABAE;
     stroke-width: 5px;
 }
+
 .droite {
     stroke: #f43020;
     stroke-width: 5px;
 }
+
 .tangente {
     stroke: #f43020;
     transition: opacity 1s;
     opacity: 0;
 
 }
+
 .tangentePoint {
     fill: #e5c185;
     transition: opacity 1s;
     opacity: 0;
 }
+
 .tangentePointExpli {
     fill: #121111;
 }
