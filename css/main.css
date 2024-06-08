@@ -38,7 +38,6 @@ body {
     border: 1px solid rgb(150, 150, 150, 0.75);
     border-radius: var(--default-border-radius);
     width: 90%;
-    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,3 +2,24 @@
     width: 100%;
     height: 100%;
 }
+.cardEq {
+    margin: 10px 0 10px 0;
+    width: 90%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #76ae7d;
+}
+.cardEqSelected {
+    background-color: #76ae7d;
+}
+.cardEq p {
+    font-size: 14pt;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    transform: scale(1);
+    transition: 0.5s;
+}
