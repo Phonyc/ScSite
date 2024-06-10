@@ -214,7 +214,7 @@
                  data-gotopbyscroll="false"
                  style="margin-top: 40px;display: flex;justify-content: center;align-items: center;width: 170px"
                  onclick="validatePointTE(this)">
-                <p>↓&nbsp;&nbsp; Animations &nbsp;&nbsp;↓</p>
+                <p>↓&nbsp;&nbsp; Exemples &nbsp;&nbsp;↓</p>
             </div>
         </div>
     </div>
@@ -223,31 +223,7 @@
         <div class="expliNDeContent" style="flex-direction: column; align-items: center">
             <div style="width: 100%; height: 60vh; display: flex; padding: 10px; box-sizing: border-box; flex-direction: row">
 
-                <div style="flex: 2;box-sizing: border-box; display: flex; align-items: center; justify-content:center;  padding: 0; flex-direction: column">
-                    <div class="card cardEq">
-                        <p>
-                            $\forall x \in \mathbb{R}, f(x) = x^2$</p>
-                    </div>
-                    <div class="card cardEq">
-                        <p>
-                            $\forall x \in \mathbb{R}, f(x) = x^2$</p>
-                    </div>
-                    <div class="card cardEq cardEqSelected">
-                        <p>
-                            $\forall x \in \mathbb{R}, f(x) = x^2+x^2+x^2+x^2+x^2$</p>
-                    </div>
-                    <div class="card cardEq cardEqSelected">
-                        <p class="expliText" style="padding: 0; margin: 0">
-                            $\forall x \in \mathbb{R}, f(x) = x^2$</p>
-                    </div>
-                    <div class="card cardEq">
-                        <p>
-                            $\forall x \in \mathbb{R}, f(x) = x^2$</p>
-                    </div>
-                    <div class="card cardEq">
-                        <p>
-                            $\forall x \in \mathbb{R}, f(x) = x^2$</p>
-                    </div>
+                <div id="DSchooser" style="flex: 2;box-sizing: border-box; display: flex; align-items: center; justify-content:center;  padding: 0; flex-direction: column">
                 </div>
 
 
@@ -257,13 +233,13 @@
                 <div  style="flex: 6; display: flex; flex-direction: column; justify-content: center; align-items: center" >
                 <p class="legendeText">↓ &nbsp;&nbsp;&nbsp; Courbe représentative de la fonction $f$&nbsp;&nbsp;&nbsp;↓</p>
                     <div class="card" style="flex: 1;backdrop-filter: blur(10px) saturate(0.5)">
-<!--                    <svg id="expliVariSup" class="expliVariSvg">-->
-<!--                    </svg>-->
+                    <svg id="expliDSCurveSvg" class="expliVariSvg">
+                    </svg>
                 </div>
                 <p class="legendeText">↓&nbsp;&nbsp;&nbsp;Courbe représentative de la dérivée $f'$ de la fonction $f$&nbsp;&nbsp;&nbsp;↓</p>
                     <div class="card" style="flex: 1;backdrop-filter: blur(10px) saturate(0.5);">
-<!--                        <svg id="expliVariInf" class="expliVariSvg">-->
-<!--                        </svg>-->
+                        <svg id="expliDSDerSvg" class="expliVariSvg">
+                        </svg>
                 </div>
                 </div>
             </div>

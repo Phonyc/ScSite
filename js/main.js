@@ -37,10 +37,10 @@ setTimeout( () => {
     initCurvesExpli();
     document.getElementById("pageTE").addEventListener('wheel', pageScrollerTangExpli.onScroll.bind(pageScrollerTangExpli));
     document.getElementById("btFermerP1").addEventListener('click', changeRadius);
+    renderLatex()
 }, 100)
 
-document.addEventListener("DOMContentLoaded", function () {
-
+function renderLatex() {
     renderMathInElement(document.body, {
         delimiters: [
             { left: '$$', right: '$$', display: true },
@@ -50,5 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         throwOnError: false
     });
+}
+document.addEventListener("DOMContentLoaded", function () {
+    renderLatex()
 });
 
