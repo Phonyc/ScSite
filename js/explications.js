@@ -3,7 +3,7 @@ let curveET;
 let droiteET;
 let curveVariSup;
 let curveVariInf;
-let equationsDS = [["50*Math.sin(x)", "50*Math.cos(x)", "x^2", 50], ["x**4", "4*x", "x^4", 20], ["x**3", "3*x", "x^3", 20]];
+let equationsDS = [["50*Math.sin(x)", "50*Math.cos(x)", "sin(x)", 50], ["x**4", "4*x", "x^4", 20], ["x**3", "3*x", "x^3", 20]];
 let curvesDS = [];
 function initCurvesExpli() {
 
